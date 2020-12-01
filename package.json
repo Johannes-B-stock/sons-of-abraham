@@ -1,0 +1,10 @@
+{
+  "name": "sons-of-abraham",
+  "private": true,
+  "author": "Johannes Birkenstock",
+  "license": "GNU",
+  "scripts": {},
+  "engines": {
+    "node": ">=10.x"
+  }
+}

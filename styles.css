@@ -1,0 +1,12 @@
+.background-image {
+  background-image: url(images/arabic-praise_d2.jpg);
+  background-position: center;
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: contain;
+}
+.container {
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  text-align: center;
+}
