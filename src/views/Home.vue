@@ -4,6 +4,17 @@
     <div class="tile is-ancestor">
       <div class="tile is-parent">
         <div class="tile is-child box">
+          <img alt="Cover logo" src="../assets/cover.png" />
+        </div>
+      </div>
+      <div class="tile is-parent">
+        <article class="tile is-child box">
+          <p class="title">
+            SoNs of Abraham
+          </p>
+          <p class="subtitle">
+            What is this about?
+          </p>
           <p>
             Dear listener, the album you are about to hear was created by a
             music collective called Symphony of Nations. The journey to develop
@@ -22,19 +33,14 @@
             have created together between nations will be a seed planted for new
             hope, new joy, and new life in the Middle East and beyond.
           </p>
-        </div>
-      </div>
-      <div class="tile is-parent">
-        <div class="tile is-child box">
-          <img alt="Cover logo" src="../assets/cover.png" />
-        </div>
+        </article>
       </div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
+import { Component, Vue } from 'vue-property-decorator';
 // import HelloWorld from "@/components/HelloWorld.vue"; // @ is an alias to /src
 
 @Component({

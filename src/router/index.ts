@@ -1,47 +1,49 @@
-import Vue from "vue";
-import VueRouter, { RouteConfig } from "vue-router";
-import Home from "../views/Home.vue";
+import Vue from 'vue';
+import VueRouter, { RouteConfig } from 'vue-router';
+import Home from '../views/Home.vue';
+import Lyrics from '../views/Lyrics.vue';
 
 Vue.use(VueRouter);
 
 const routes: Array<RouteConfig> = [
   {
-    path: "/",
-    name: "Home",
-    component: Home
+    path: '/',
+    name: 'Home',
+    component: Home,
   },
   {
-    path: "/info",
-    name: "Info",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ "../views/Info.vue")
-  },
-  {
-    path: "/music",
-    name: "Music",
+    path: '/info',
+    name: 'Info',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () =>
-      import(/* webpackChunkName: "about" */ "../views/Music.vue")
+      import(/* webpackChunkName: "about" */ '../views/Info.vue'),
   },
   {
-    path: "/lyrics",
-    name: "Lyrics",
+    path: '/music',
+    name: 'Music',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () =>
-      import(/* webpackChunkName: "about" */ "../views/Lyrics.vue")
-  }
+      import(/* webpackChunkName: "about" */ '../views/Music.vue'),
+  },
+  {
+    path: '/lyrics',
+    name: 'Lyrics',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: Lyrics,
+  },
 ];
 
 const router = new VueRouter({
-  mode: "history",
+  mode: 'history',
   base: process.env.BASE_URL,
-  routes
+  routes,
+  linkActiveClass: 'is-active',
 });
 
 export default router;
