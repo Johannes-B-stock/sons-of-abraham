@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" class="has-background-white-bis">
     <Header />
     <div class="container is-max-widescreen my-5">
       <router-view />

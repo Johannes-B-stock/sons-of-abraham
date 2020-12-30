@@ -2,9 +2,16 @@
   <div class="modal" v-bind:class="{ 'is-active': isActive }">
     <div class="modal-background" v-on:click="closeModal()"></div>
     <div class="modal-content">
-      <div class="box lyrics p-6">
+      <div class="box lyrics py-5">
+        <div class="watermark">
+          {{ song.trackNumber }}
+        </div>
         <p class="title">{{ getTitle() }}</p>
-        <p v-html="getText()"></p>
+        <p
+          class="has-text-centered is-size-5-desktop is-size-7-mobile is-size-6-tablet"
+          v-html="getText()"
+        ></p>
+        <br />
       </div>
     </div>
     <button
@@ -16,7 +23,7 @@
 </template>
 
 <script lang="ts">
-import { SongInfo } from '@/songs/songInterface';
+import { SongInfo } from '@/content/songInterface';
 import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
 
 @Component
@@ -27,7 +34,6 @@ export default class SongText extends Vue {
 
   @Watch('active', { immediate: true, deep: true })
   onActiveChanged(val: boolean) {
-    console.log(this.song.textEn);
     this.isActive = val;
   }
   private isActive = this.active;
@@ -50,6 +56,15 @@ export default class SongText extends Vue {
 
 <style scoped>
 .lyrics {
-  background-image: url('../assets/SON-backgrounds3.png');
+  background-image: url('../assets/songtext-background.png');
+  background-size: cover;
+  line-height: 2.1rem;
+}
+.watermark {
+  position: fixed;
+  font-size: 80px;
+  opacity: 0.1;
+  z-index: 99;
+  color: black;
 }
 </style>

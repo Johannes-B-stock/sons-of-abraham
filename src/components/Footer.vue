@@ -1,6 +1,6 @@
 <template>
   <div>
-    <footer class="footer">
+    <footer class="footer pb-6 has-background-grey-lighter">
       <div class="content has-text-centered">
         <p>
           <strong>Created</strong> by <strong>Johannes Birkenstock</strong>. The
@@ -8,14 +8,28 @@
           <a href="http://opensource.org/licenses/mit-license.php">MIT</a>.
           <br />
           &copy; {{ date }}
-          <a href="http://sons-music.de/">Sympony Of Nations (SoNs)</a> all
-          rights reserved
+          Sympony Of Nations (SoNs) all rights reserved
         </p>
-        <span class="icon has-text-info" style="font-size: 2em;">
-          <a href="https://www.facebook.com/SoNs.Symphony/" target="blank">
-            <i class="fab fa-facebook"></i>
-          </a>
-        </span>
+        <div>
+          <span class="icon has-text-info" style="font-size: 2em;">
+            <a href="https://www.facebook.com/SoNs.Symphony/" target="blank">
+              <i class="fab fa-facebook"></i>
+            </a>
+          </span>
+          <br />
+          <span class="">
+            <a href="http://www.sons-music.de/" target="blank">
+              <img src="SONS-logo-BW.svg" alt="SoNs" width="150px" />
+              <!-- <object
+                type="image/svg+xml"
+                data="SONS-logo-BW.svg"
+                class="logo is-clickable"
+              >
+                SoNs Logo
+              </object> -->
+            </a>
+          </span>
+        </div>
       </div>
     </footer>
   </div>
@@ -32,7 +46,11 @@ export default class Footer extends Vue {
 
 <style scoped>
 .footer {
-  background-image: url(../assets/footer-background.png);
+  /* background-image: url(../assets/footer-background.png); */
   background-size: cover;
+}
+.logo {
+  width: 150px;
+  height: 60px;
 }
 </style>
