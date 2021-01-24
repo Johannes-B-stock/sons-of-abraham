@@ -1,0 +1,28 @@
+@import url(https://fonts.googleapis.com/css2?family=Lato&display=swap);
+
+$red: #c93e3b;
+$purple: #8a4d76;
+$pink: #f0855f;
+$pink-light: #fa8e68;
+$pink-lighter: #eca783;
+$brown: #757763;
+$beige: #cfb999;
+$beige-light: #d0d1cd;
+$beige-lighter: #eff0eb;
+$yellow: #e3a44e;
+$blue: #bfc8c9;
+
+$family-sans-serif: 'Lato', sans-serif;
+
+$primary: $pink;
+$link: $pink-light;
+$light: $beige-light;
+
+// Update some of Bulma's component variables
+$body-background-color: $yellow;
+$control-border-width: 2px;
+$navbar-background-color: transparent;
+$navbar-item-color: white;
+$navbar-item-active-color: grey;
+
+@import '~bulma';

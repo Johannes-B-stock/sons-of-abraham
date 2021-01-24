@@ -1,9 +1,8 @@
 <template>
-  <div id="app" class="has-background-white-bis">
+  <div id="app">
     <Header />
-    <div class="container is-max-widescreen my-5">
-      <router-view />
-    </div>
+    <router-view />
+
     <Footer />
   </div>
 </template>
@@ -27,7 +26,7 @@ export default class App extends Vue {}
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
 }
-.navbar {
-  background-image: url('./assets/cover_name_background.png');
+body {
+  font-family: 'Lato', sans-serif;
 }
 </style>
