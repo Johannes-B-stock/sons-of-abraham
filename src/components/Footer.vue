@@ -1,6 +1,6 @@
 <template>
   <div>
-    <footer class="footer pb-6 has-background-grey-lighter">
+    <footer class="footer pb-6">
       <div class="content has-text-centered">
         <p>
           Created by Johannes Birkenstock. Design and images by Rhythm DS.
@@ -11,12 +11,6 @@
           Sympony Of Nations (SoNs) all rights reserved
         </p>
         <div>
-          <span class="icon has-text-info" style="font-size: 2em;">
-            <a href="https://www.facebook.com/SoNs.Symphony/" target="blank">
-              <i class="fab fa-facebook"></i>
-            </a>
-          </span>
-          <br />
           <span>
             <a href="http://www.sons-music.de/" target="blank">
               <img src="SONS-logo-BW.svg" alt="SoNs" width="150px" />
@@ -45,10 +39,10 @@ export default class Footer extends Vue {
 </script>
 
 <style scoped>
-.footer {
-  /* background-image: url(../assets/footer-background.png); */
-  background-size: cover;
-}
+/* .footer { */
+/* background-image: url(../assets/footer-background.png); */
+/* background-size: cover; */
+/* } */
 .logo {
   width: 150px;
   height: 60px;

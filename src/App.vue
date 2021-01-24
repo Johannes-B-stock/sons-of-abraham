@@ -27,7 +27,7 @@ export default class App extends Vue {}
   text-align: center;
 }
 body {
-  font-family: 'Lato', sans-serif;
+  font-family: 'Roboto', 'Lato', sans-serif;
 }
 html {
   scroll-behavior: smooth;

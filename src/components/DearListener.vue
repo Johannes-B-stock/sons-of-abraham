@@ -1,9 +1,9 @@
 <template>
-  <section class=" dear-listener">
+  <section class="dear-listener">
     <div class="container is-max-desktop">
       <div class="columns">
         <div
-          class="column is-three-fifths has-text-white has-text-right is-size-3 p-4"
+          class="column is-italic is-three-fifths has-text-white has-text-right is-size-3 p-4"
           style="margin-top:auto"
         >
           Dear listener,
@@ -26,7 +26,7 @@
           </figure>
         </div>
         <div class="column is-two-fifths has-text-white has-text-justified">
-          <div class="is-size-5 m-5">
+          <div class="is-size-5 ml-3 mt-3 mb-6">
             the album you are about to hear was created by a music collective
             called Symphony of Nations. The journey to develop this album began
             in February 2017, as we travelled to Baghdad to visit local refugee
@@ -48,3 +48,9 @@ import { Component, Vue } from 'vue-property-decorator';
 @Component
 export default class DearListener extends Vue {}
 </script>
+
+<style scoped>
+.dear-listener {
+  background-color: #cfb999;
+}
+</style>

@@ -5,17 +5,20 @@ $purple: #8a4d76;
 $pink: #f0855f;
 $pink-light: #fa8e68;
 $pink-lighter: #eca783;
-$brown: #757763;
+$brown: #9f664b;
 $beige: #cfb999;
 $beige-light: #d0d1cd;
 $beige-lighter: #eff0eb;
 $yellow: #e3a44e;
 $blue: #bfc8c9;
 
+$custom-colors: (
+  'brown': #9f664b,
+);
 $family-sans-serif: 'Lato', sans-serif;
 
 $primary: $pink;
-$link: $pink-light;
+$link: $pink-lighter;
 $light: $beige-light;
 
 // Update some of Bulma's component variables
