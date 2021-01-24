@@ -29,4 +29,7 @@ export default class App extends Vue {}
 body {
   font-family: 'Lato', sans-serif;
 }
+html {
+  scroll-behavior: smooth;
+}
 </style>

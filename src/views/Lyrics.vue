@@ -37,7 +37,7 @@ export default class Lyrics extends Vue {
 
 <style scoped>
 .songlist {
-  background-image: url('../assets/SON-backgrounds6.jpg');
+  background-image: url('../assets/lyrics-background.jpg');
   background-size: cover;
 }
 

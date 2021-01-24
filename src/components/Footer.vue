@@ -3,8 +3,8 @@
     <footer class="footer pb-6 has-background-grey-lighter">
       <div class="content has-text-centered">
         <p>
-          <strong>Created</strong> by <strong>Johannes Birkenstock</strong>. The
-          source code is licensed
+          Created by Johannes Birkenstock. Design and images by Rhythm DS.
+          <br />The source code is licensed
           <a href="http://opensource.org/licenses/mit-license.php">MIT</a>.
           <br />
           &copy; {{ date }}
@@ -17,7 +17,7 @@
             </a>
           </span>
           <br />
-          <span class="">
+          <span>
             <a href="http://www.sons-music.de/" target="blank">
               <img src="SONS-logo-BW.svg" alt="SoNs" width="150px" />
               <!-- <object
