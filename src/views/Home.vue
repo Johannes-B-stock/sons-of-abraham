@@ -6,13 +6,15 @@
         <div class="is-12 is-vertical has-text-centered">
           <h1 class="title">SoNs of Abraham</h1>
           <img
+            data-aos="fade-zoom-in"
+            data-aos-easing="ease-in-sine"
             class="cover mb-5"
             src="../assets/CD_SON_2020_cover-notext.jpg"
           />
           <AlbumButtons />
         </div>
         <span class="icon is-size-3" style="margin-top: 10vh">
-          <a><i class="fas fa-arrow-down primary"></i></a>
+          <a href="#what-about"><i class="fas fa-arrow-down primary"></i></a>
         </span>
       </div>
     </section>

@@ -1,12 +1,17 @@
 <template>
-  <div class="buttons has-addons is-centered">
+  <div
+    class="buttons has-addons is-centered"
+    data-aos="fade-zoom-in"
+    data-aos-easing="ease-in-sine"
+    data-aos-duration="500"
+  >
     <a class="button button-light" href="/music">
       <span>Listen now</span>
     </a>
 
-    <button class="button button-normal">
+    <a class="button button-normal" href="#what-about">
       <span>Know more</span>
-    </button>
+    </a>
 
     <a class="button button-light" href="/lyrics">
       <span>Read lyrics</span>

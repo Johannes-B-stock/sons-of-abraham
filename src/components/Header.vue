@@ -57,10 +57,10 @@ export default class Header extends Vue {
 </script>
 
 <style scoped>
-.navbar {
-  /* z-index: 1010!; */
-  /* background-color: rgba(255, 255, 255, 0); */
-}
+/* .navbar { */
+/* z-index: 1010!; */
+/* background-color: rgba(255, 255, 255, 0); */
+/* } */
 .brand-text {
   font-size: x-large;
 }
