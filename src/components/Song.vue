@@ -7,7 +7,7 @@
       v-bind:language="language"
     />
     <div
-      class="columns is-vcentered is-size-5-desktop is-size-6-mobile is-size-6-tablet"
+      class="columns is-vcentered is-size-5-desktop is-size-6-mobile is-size-6-tablet has-text-weight-medium"
     >
       <div class="column is-clickable" v-on:click="showLyrics('en')">
         <div class="columns is-mobile">

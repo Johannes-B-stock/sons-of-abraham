@@ -64,7 +64,7 @@ export default class SongText extends Vue {
   position: fixed;
   font-size: 80px;
   opacity: 0.1;
-  z-index: 99;
+  /* z-index: 99; */
   color: black;
 }
 </style>
