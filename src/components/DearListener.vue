@@ -1,5 +1,5 @@
 <template>
-  <section class="dear-listener">
+  <section class="dear-listener is-clipped">
     <div class="container is-max-desktop">
       <div class="columns">
         <div
@@ -15,7 +15,7 @@
         </div>
       </div>
       <div class="columns">
-        <div class="column is-three-fifths p-0">
+        <div class="column is-hidden-mobile is-three-fifths p-0">
           <figure class="image is-1024x638">
             <img
               src="../assets/bridge.jpg"
@@ -26,14 +26,8 @@
           </figure>
         </div>
         <div class="column is-two-fifths has-text-white has-text-justified">
-          <div class="is-size-5 ml-3 mt-3 mb-6">
-            the album you are about to hear was created by a music collective
-            called Symphony of Nations. The journey to develop this album began
-            in February 2017, as we travelled to Baghdad to visit local refugee
-            camps in the area. Our friends there explained to us how all over
-            the world, Arabic speaking communities were in need of something
-            that would invoke a sense of hope and peace, and invited us to
-            collaborate with them to create a music project with a local singer.
+          <div class="is-size-5-desktop is-size-6-touch ml-3 mt-3 mb-6">
+            {{ longText }}
           </div>
         </div>
       </div>
@@ -46,7 +40,15 @@
 import { Component, Vue } from 'vue-property-decorator';
 
 @Component
-export default class DearListener extends Vue {}
+export default class DearListener extends Vue {
+  longText = `the album you are about to hear was created by a music collective
+            called Symphony of Nations. The journey to develop this album began
+            in February 2017, as we travelled to Baghdad to visit local refugee
+            camps in the area. Our friends there explained to us how all over
+            the world, Arabic speaking communities were in need of something
+            that would invoke a sense of hope and peace, and invited us to
+            collaborate with them to create a music project with a local singer.`;
+}
 </script>
 
 <style scoped>

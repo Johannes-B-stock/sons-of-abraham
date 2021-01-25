@@ -4,7 +4,7 @@
     role="navigation"
     aria-label="main navigation"
   >
-    <div class="container">
+    <div class="container is-max-desktop">
       <div class="navbar-brand">
         <a class="navbar-item is-size-3" href="/">
           <strong> SoNs</strong>
@@ -26,15 +26,15 @@
 
       <div
         id="navbarItems"
-        class="navbar-menu"
+        class="navbar-menu is-boxed"
         v-bind:class="{ 'is-active': isActive }"
       >
-        <div class="navbar-end mr-5 ">
+        <div class="navbar-end mr-5">
           <router-link class="navbar-item" to="/" exact>Home</router-link>
           <router-link class="navbar-item" to="/lyrics">Lyrics</router-link>
           <router-link class="navbar-item" to="/music">Music</router-link>
           <router-link class="navbar-item" to="/info">Info</router-link>
-          <div class="navbar-item ml-6">
+          <div class="navbar-item px-6">
             <span class="icon has-text-info" style="font-size: 1.5em">
               <a href="https://www.facebook.com/SoNs.Symphony/" target="blank">
                 <i class="fab fa-facebook"></i>
