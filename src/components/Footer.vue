@@ -1,6 +1,6 @@
 <template>
   <div>
-    <footer class="footer pb-6">
+    <footer class="footer has-background-warning pb-6">
       <div class="content has-text-centered">
         <p>
           Created by Johannes Birkenstock. Design and images by Rhythm DS.

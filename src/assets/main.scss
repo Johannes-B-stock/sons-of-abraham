@@ -4,17 +4,25 @@
   src: url(./fonts/Roboto-Regular.ttf) format('truetype');
 }
 
-$red: #c93e3b;
-$purple: #8a4d76;
-$pink: #f0855f;
-$pink-light: #fa8e68;
-$pink-lighter: #eca783;
-$brown: rgb(159, 102, 75);
-$beige: rgb(207, 185, 153);
+$wine: #c83737ff;
+$grey: #bfc9c8ff;
+$mustard: #e4a44cff;
+$salmon: #f0855fff;
+$pale-salmon: #eca784ff;
+$brown: #9f664bff;
+$beige: #cfb999ff;
+
 $beige-light: #d0d1cd;
+$pink-light: #fa8e68;
+$purple: #8a4d76;
 $beige-lighter: #eff0eb;
-$yellow: #e3a44e;
-$blue: #bfc8c9;
+
+$pink: $salmon;
+$pink-lighter: $pale-salmon;
+$red: $wine;
+$yellow: $mustard;
+
+$blue: $grey;
 $translucent-beige: rgba(207, 185, 153, 0.5);
 $translucent-brown: rgba(195, 102, 75, 0.5);
 
@@ -28,7 +36,8 @@ $link: $pink-lighter;
 $light: $beige-light;
 
 // Update some of Bulma's component variables
-$body-background-color: $yellow;
+$body-background-color: $mustard;
+$dropdown-menu-min-width: 4rem;
 $navbar-dropdown-background-color: $beige-light;
 $navbar-dropdown-item-hover-background-color: $translucent-beige;
 $navbar-dropdown-item-active-background-color: $translucent-brown;

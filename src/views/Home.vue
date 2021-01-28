@@ -29,6 +29,8 @@
     <WhatAbout />
     <DearListener />
     <DearListener2 />
+    <Sons />
+    <section class="section has-background-warning"></section>
   </div>
 </template>
 
@@ -39,6 +41,7 @@ import AlbumButtons from '@/components/AlbumButtons.vue';
 import DearListener from '@/components/DearListener.vue';
 import DearListener2 from '@/components/DearListener2.vue';
 import WhatAbout from '@/components/WhatAbout.vue';
+import Sons from '@/components/Sons.vue';
 
 @Component({
   components: {
@@ -47,6 +50,7 @@ import WhatAbout from '@/components/WhatAbout.vue';
     DearListener,
     DearListener2,
     WhatAbout,
+    Sons,
   },
 })
 export default class Home extends Vue {}

@@ -30,16 +30,27 @@
         v-bind:class="{ 'is-active': isActive }"
       >
         <div class="navbar-end mr-5">
-          <router-link class="navbar-item" to="/" exact>Home</router-link>
-          <router-link class="navbar-item" to="/lyrics">Lyrics</router-link>
-          <router-link class="navbar-item" to="/music">Music</router-link>
-          <router-link class="navbar-item" to="/info">Info</router-link>
+          <router-link class="navbar-item" to="/" exact>{{
+            $t('header.about')
+          }}</router-link>
+          <router-link class="navbar-item" to="/lyrics">{{
+            $t('header.lyrics')
+          }}</router-link>
+          <router-link class="navbar-item" to="/music">{{
+            $t('header.music')
+          }}</router-link>
+          <router-link class="navbar-item" to="/info">{{
+            $t('header.info')
+          }}</router-link>
           <div class="navbar-item px-6">
             <span class="icon has-text-info" style="font-size: 1.5em">
               <a href="https://www.facebook.com/SoNs.Symphony/" target="blank">
                 <i class="fab fa-facebook"></i>
               </a>
             </span>
+          </div>
+          <div class="navbar-item">
+            <LanguagePicker />
           </div>
         </div>
       </div>
@@ -49,8 +60,13 @@
 <style scoped></style>
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
+import LanguagePicker from './LanguagePicker.vue';
 
-@Component
+@Component({
+  components: {
+    LanguagePicker,
+  },
+})
 export default class Header extends Vue {
   private isActive = false;
 }

@@ -3,13 +3,18 @@
     <div class="container is-max-desktop">
       <div class="columns">
         <div
-          class="column is-italic is-three-fifths has-text-white has-text-right is-size-3 p-4"
+          class="column is-three-fifths has-text-white has-text-justified is-size-5-desktop is-size-6-touch p-6"
           style="margin-top:auto"
         >
-          Dear listener,
+          {{ firstText }}
         </div>
         <div class="column is-two-fifths p-0">
-          <figure class="image is-1024x638">
+          <figure
+            data-aos="fade-zoom-in"
+            data-aos-easing="ease-in-sine"
+            data-aos-once="true"
+            class="image is-1024x638"
+          >
             <img src="../assets/hill-city.jpg" width="100%" height="100%" />
           </figure>
         </div>
@@ -26,8 +31,8 @@
           </figure>
         </div>
         <div class="column is-two-fifths has-text-white has-text-justified">
-          <div class="is-size-5-desktop is-size-6-touch ml-3 mt-3 mb-6">
-            {{ longText }}
+          <div class="is-size-5-desktop is-size-6-touch p-6 mb-2">
+            {{ secondText }}
           </div>
         </div>
       </div>
@@ -41,10 +46,11 @@ import { Component, Vue } from 'vue-property-decorator';
 
 @Component
 export default class DearListener extends Vue {
-  longText = `the album you are about to hear was created by a music collective
+  firstText = `the album you are about to hear was created by a music collective
             called Symphony of Nations. The journey to develop this album began
             in February 2017, as we travelled to Baghdad to visit local refugee
-            camps in the area. Our friends there explained to us how all over
+            camps in the area.`;
+  secondText = `Our friends there explained to us how all over
             the world, Arabic speaking communities were in need of something
             that would invoke a sense of hope and peace, and invited us to
             collaborate with them to create a music project with a local singer.`;

@@ -2,7 +2,9 @@
   <section class="section is-clipped dear-listener-2 has-background-link">
     <div class="has-background-brown rectangle is-hidden-mobile"></div>
     <div class="has-background-danger circle left "></div>
-    <div class="has-background-warning circle right is-hidden-mobile"></div>
+    <div
+      class="has-background-warning bigger-circle right is-hidden-mobile"
+    ></div>
     <div class="has-background-warning circle middle is-hidden-tablet"></div>
     <div
       class="container is-max-desktop p-6-desktop 
@@ -20,17 +22,20 @@
         class="children-image"
         data-aos="fade-zoom-in"
         data-aos-easing="ease-in-sine"
+        data-aos-once="true"
         src="../assets/children.jpg"
       />
       <img
         class="green-hill-image pl-4"
         data-aos="fade-zoom-in"
         data-aos-easing="ease-in-sine"
+        data-aos-once="true"
         src="../assets/green-hill.jpg"
       />
       <div
         data-aos-easing="ease-in-sine"
         data-aos="fade-zoom-in"
+        data-aos-once="true"
         class="is-hidden-mobile big-message centered top-rounded is-italic has-text-weight-semibold 
         has-text-centered p-6 is-size-3 has-text-white has-background-warning"
       >
@@ -40,11 +45,15 @@
     <div
       data-aos-easing="ease-in-sine"
       data-aos="fade-zoom-in"
+      data-aos-once
       class="is-hidden-tablet small-message centered top-rounded is-italic has-text-weight-semibold 
         has-text-centered p-5 is-size-4 has-text-white has-background-warning"
     >
       <span v-html="wehopeText"> </span>
     </div>
+    <figure class="image is-1024x683" style="position:inherit">
+      <img class="narrow-road" src="../assets/narrow-road.jpg" />
+    </figure>
   </section>
 </template>
 
@@ -76,6 +85,12 @@ export default class DearListener2 extends Vue {
   width: 200px;
   height: 200px;
 }
+
+.bigger-circle {
+  border-radius: 100%;
+  width: 300px;
+  height: 300px;
+}
 .rectangle {
   width: 150px;
   height: 350px;
@@ -90,6 +105,7 @@ export default class DearListener2 extends Vue {
 .centered {
   margin-left: auto;
   margin-right: auto;
+  z-index: 2000;
 }
 .big-message {
   margin-top: 150px;
@@ -97,6 +113,12 @@ export default class DearListener2 extends Vue {
   height: 500px;
 }
 
+.narrow-road {
+  width: 100vw;
+  height: 100%;
+  z-index: 0;
+  margin-top: -130px;
+}
 .small-message {
   margin-top: 150px;
   width: 280px;
@@ -111,7 +133,7 @@ export default class DearListener2 extends Vue {
 .left {
   left: -7vw;
   position: absolute;
-  margin-top: 5%;
+  margin-top: 9%;
 }
 .children-image {
   width: 550px;
@@ -122,9 +144,9 @@ export default class DearListener2 extends Vue {
   right: 20%;
 }
 .right {
-  right: -7vw;
+  right: -12vw;
   position: absolute;
-  margin-top: -7%;
+  margin-top: -12%;
 }
 
 .middle {
