@@ -23,7 +23,6 @@
           class="dropdown-item"
         >
           <img class="lang-icon" :src="'/flags/' + lang + '.png'" />
-          <!-- {{ lang }} -->
         </a>
       </div>
     </div>
@@ -33,16 +32,30 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 
-@Component
+@Component({})
 export default class LanguagePicker extends Vue {
   langs = ['en', 'de', 'ar'];
   selectedLang = this.langs[0];
   dropdown = false;
 
+  mounted() {
+    document.addEventListener('click', this.close);
+  }
+
+  beforeDestroy() {
+    document.removeEventListener('click', this.close);
+  }
+
   changeLanguage(lang: string) {
     this.dropdown = false;
     this.selectedLang = lang;
     this.$root.$i18n.locale = lang;
+  }
+  close(ev: MouseEvent) {
+    const target = ev.target;
+    if (target instanceof Node && !this.$el.contains(target)) {
+      this.dropdown = false;
+    }
   }
 }
 </script>
@@ -68,6 +81,7 @@ a.dropdown-item {
   background-color: rgba(0, 0, 0, 0);
 }
 .button:hover {
-  box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.2);
+  box-shadow: 0em 0.5em 1em -0.125em rgba(0, 0, 0, 0.2),
+    0 0 0 1px rgb(10, 10, 10, 0%);
 }
 </style>

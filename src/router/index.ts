@@ -2,6 +2,7 @@ import Vue from 'vue';
 import VueRouter, { RouteConfig } from 'vue-router';
 import Home from '../views/Home.vue';
 import Lyrics from '../views/Lyrics.vue';
+import Music from '../views/Music.vue';
 
 Vue.use(VueRouter);
 
@@ -15,27 +16,29 @@ const routes: Array<RouteConfig> = [
     path: '/info',
     name: 'Info',
     // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
+    // this generates a separate chunk (info.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ '../views/Info.vue'),
+    component: () => import(/* webpackChunkName: "info" */ '../views/Info.vue'),
   },
   {
     path: '/music',
     name: 'Music',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ '../views/Music.vue'),
+    component: Music,
   },
   {
     path: '/lyrics',
     name: 'Lyrics',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
     component: Lyrics,
+  },
+  {
+    path: '/impressum',
+    name: 'Impressum',
+    component: () => import('../views/Impressum.vue'),
+  },
+  {
+    path: '/datenschutz',
+    name: 'Datenschutz',
+    component: () => import('../views/Datenschutz.vue'),
   },
 ];
 

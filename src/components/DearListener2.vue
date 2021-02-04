@@ -11,11 +11,11 @@
         has-text-justified is-size-5-tablet is-size-6-mobile"
     >
       <span class="has-text-white is-hidden-desktop">
-        {{ longText }}
+        {{ $t('about.text3') }}
       </span>
       <div class="more-padding is-hidden-touch">
         <span class="has-text-white">
-          {{ longText }}
+          {{ $t('about.text3') }}
         </span>
       </div>
       <img
@@ -39,7 +39,7 @@
         class="is-hidden-mobile big-message centered top-rounded is-italic has-text-weight-semibold 
         has-text-centered p-6 is-size-3 has-text-white has-background-warning"
       >
-        <span v-html="wehopeText"> </span>
+        <span v-html="$t('about.hope')"> </span>
       </div>
     </div>
     <div
@@ -49,7 +49,7 @@
       class="is-hidden-tablet small-message centered top-rounded is-italic has-text-weight-semibold 
         has-text-centered p-5 is-size-4 has-text-white has-background-warning"
     >
-      <span v-html="wehopeText"> </span>
+      <span v-html="$t('about.hope')"> </span>
     </div>
     <figure class="image is-1024x683" style="position:inherit">
       <img class="narrow-road" src="../assets/narrow-road.jpg" />
@@ -61,22 +61,7 @@
 import { Component, Vue } from 'vue-property-decorator';
 
 @Component
-export default class DearListener2 extends Vue {
-  longText = `Over the course of two years, musicians from many different nations
-          participated in the writing and recording of this album, each one
-          bringing a unique flavor from their own culture. Now, as we near the
-          end of 2020, we are delighted to present this final product to you. We
-          hope to use this album as a point of connection between eastern and
-          western cultures, and in particular, spotlight the beauty of the Iraqi
-          heritage. We hope that what we have created together between nations
-          will be a seed planted for new hope, new joy, and new life in the
-          Middle East and beyond.`;
-
-  wehopeText = `"We hope <br />
-          that what we have created together between nations will be a seed
-          planted for new hope, new joy, and new life in the Middle East and
-          beyond."`;
-}
+export default class DearListener2 extends Vue {}
 </script>
 
 <style scoped>
@@ -109,8 +94,8 @@ export default class DearListener2 extends Vue {
 }
 .big-message {
   margin-top: 150px;
-  width: 400px;
-  height: 500px;
+  width: 420px;
+  height: 100%;
 }
 
 .narrow-road {

@@ -1,35 +1,76 @@
 <template>
-  <section class="section">
+  <section class="section music has-background-light">
     <div class="container is-max-desktop mt-4">
-      <div class="about">
-        <iframe
-          width="100%"
-          height="450"
-          scrolling="no"
-          frameborder="no"
-          allow="autoplay"
-          src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1125203047%3Fsecret_token%3Ds-hmhAg7qPFSq&color=%23d7bc93&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"
-        ></iframe>
-        <div
-          style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"
-        >
-          <a
-            href="https://soundcloud.com/johannes-birkenstock"
-            title="Symphony Of Nations"
-            target="_blank"
-            style="color: #cccccc; text-decoration: none;"
-            >Symphony Of Nations</a
-          >
-          ·
-          <a
-            href="https://soundcloud.com/johannes-birkenstock/sets/arabic-worship/s-hmhAg7qPFSq"
-            title="SoNs of Abraham"
-            target="_blank"
-            style="color: #cccccc; text-decoration: none;"
-            >SoNs of Abraham</a
-          >
-        </div>
+      <div class="level" style="max-width:150px; margin: auto">
+        <span class="level-item icon is-size-4" v-on:click="previousSong">
+          <a><i class="fas fa-angle-double-left"></i></a>
+        </span>
+        <MiniPlayer
+          class="level-item"
+          :sources="currentSource"
+          :loop="false"
+          :autoplay="autoplay"
+        ></MiniPlayer>
+
+        <span class="level-item icon is-size-4" v-on:click="nextSong">
+          <a><i class="fas fa-angle-double-right"></i></a>
+        </span>
+      </div>
+      <br /><br />
+      <div class="level" style="max-width:150px; margin: auto">
+        <AudioPlayer
+          class="level-item"
+          :sources="currentSource"
+          :loop="false"
+          :autoplay="autoplay"
+        ></AudioPlayer>
       </div>
     </div>
   </section>
 </template>
+
+<script lang="ts">
+import { Component, Vue } from 'vue-property-decorator';
+import MiniPlayer from '@/components/MiniPlayer.vue';
+import AudioPlayer from '@/components/AudioPlayer.vue';
+
+@Component({
+  components: {
+    MiniPlayer,
+    AudioPlayer,
+  },
+})
+export default class Music extends Vue {
+  private index = 0;
+  private autoplay = false;
+  private allAudioSources = [
+    './music/01-Trust in God_short.mp3',
+    './music/02-Sing a new Song_short.mp3',
+    './music/03-Camel_short.mp3',
+  ];
+  private currentSource = [this.allAudioSources[this.index]];
+  nextSong() {
+    this.index++;
+    this.autoplay = true;
+    if (this.index >= this.allAudioSources.length) {
+      this.index = 0;
+    }
+    this.currentSource = [this.allAudioSources[this.index]];
+  }
+  previousSong() {
+    this.index--;
+    this.autoplay = true;
+    if (this.index < 0) {
+      this.index = 0;
+    }
+    this.currentSource = [this.allAudioSources[this.index]];
+  }
+}
+</script>
+
+<style scoped>
+.music {
+  padding-top: 200px;
+  padding-bottom: 200px;
+}
+</style>

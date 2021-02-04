@@ -1,6 +1,7 @@
 <template>
   <nav
     class="is-transparent is-fixed-top navbar"
+    v-bind:class="{ 'has-background-light': !isScrolledToTop }"
     role="navigation"
     aria-label="main navigation"
   >
@@ -42,7 +43,7 @@
           <router-link class="navbar-item" to="/info">{{
             $t('header.info')
           }}</router-link>
-          <div class="navbar-item px-6">
+          <div class="navbar-item pl-6">
             <span class="icon has-text-info" style="font-size: 1.5em">
               <a href="https://www.facebook.com/SoNs.Symphony/" target="blank">
                 <i class="fab fa-facebook"></i>
@@ -69,6 +70,7 @@ import LanguagePicker from './LanguagePicker.vue';
 })
 export default class Header extends Vue {
   private isActive = false;
+  private isScrolledToTop = true;
 }
 </script>
 

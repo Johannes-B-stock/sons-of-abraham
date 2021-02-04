@@ -4,26 +4,29 @@
       <div class="content has-text-centered">
         <p>
           Created by Johannes Birkenstock. Design and images by Rhythm DS.
-          <br />The source code is licensed
-          <a href="http://opensource.org/licenses/mit-license.php">MIT</a>.
-          <br />
           &copy; {{ date }}
           Sympony Of Nations (SoNs) all rights reserved
         </p>
-        <div>
-          <span>
-            <a href="http://www.sons-music.de/" target="blank">
-              <img src="SONS-logo-BW.svg" alt="SoNs" width="150px" />
-              <!-- <object
+        <span>
+          <a href="http://www.sons-music.de/" target="blank">
+            <img src="../assets/SONS-logo-BW.svg" alt="SoNs" width="150px" />
+            <!-- <object
                 type="image/svg+xml"
                 data="SONS-logo-BW.svg"
                 class="logo is-clickable"
               >
                 SoNs Logo
               </object> -->
-            </a>
-          </span>
-        </div>
+          </a>
+        </span>
+        <p>
+          <router-link class="has-text-brown is-size-7 mx-5" to="/impressum"
+            >Impressum</router-link
+          >
+          <router-link class="has-text-brown is-size-7 mx-5" to="/datenschutz"
+            >Datenschutz</router-link
+          >
+        </p>
       </div>
     </footer>
   </div>

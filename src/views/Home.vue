@@ -4,7 +4,7 @@
       <div class="layer layer-1"></div>
       <div class="layer layer-2">
         <div class="is-12 is-vertical has-text-centered">
-          <h1 class="title">SoNs of Abraham</h1>
+          <h1 class="title">{{ $t('cover.name') }}</h1>
           <img
             data-aos="fade-right"
             data-aos-easing="ease-in-sine"
@@ -19,6 +19,7 @@
             class="cover shadow mb-5"
             src="../assets/CD_SON_2020_cover-notext.jpg"
           />
+
           <AlbumButtons />
         </div>
         <span class="icon is-size-3 arrow-down-icon">
@@ -63,6 +64,7 @@ export default class Home extends Vue {}
 .homepage-hero {
   height: 100vh;
   position: relative;
+  min-height: 650px;
 }
 .homepage-hero .layer {
   position: absolute;
@@ -70,6 +72,7 @@ export default class Home extends Vue {}
   top: 0;
   width: 100%;
   height: 100vh;
+  min-height: 650px;
 }
 .homepage-hero h1 {
   padding-top: 20vh;

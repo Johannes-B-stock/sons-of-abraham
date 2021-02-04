@@ -3,14 +3,14 @@
     <section
       class="section is-hidden-tablet top-round has-background-danger is-two-fifths has-text-white is-size-3"
     >
-      What is this about?
+      {{ $t('about.about') }}
     </section>
     <div class="container is-max-desktop" style="margin-top:150px;">
       <div class="columns is-hidden-mobile ">
         <div
           class="column dear-listener has-text-white pr-6 pb-3 is-three-fifths is-size-3 is-italic"
         >
-          Dear listener,
+          {{ $t('about.listener') }}
         </div>
 
         <div
@@ -18,7 +18,7 @@
           data-aos="fade-left"
           data-aos-once="true"
         >
-          What is this about?
+          {{ $t('about.about') }}
         </div>
       </div>
     </div>

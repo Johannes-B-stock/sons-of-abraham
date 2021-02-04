@@ -6,15 +6,15 @@
     data-aos-duration="500"
   >
     <a class="button button-light" href="/music">
-      <span>Listen now</span>
+      <span>{{ $t('cover.buttons.listen') }}</span>
     </a>
 
     <a class="button button-normal" href="#what-about">
-      <span>Know more</span>
+      <span>{{ $t('cover.buttons.more') }}</span>
     </a>
 
     <a class="button button-light" href="/lyrics">
-      <span>Read lyrics</span>
+      <span>{{ $t('cover.buttons.lyrics') }}</span>
     </a>
   </div>
 </template>
