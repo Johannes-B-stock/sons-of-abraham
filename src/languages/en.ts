@@ -4,6 +4,7 @@ export default {
     music: 'Music',
     lyrics: 'Lyrics',
     info: 'Info',
+    contact: 'Contact',
   },
   cover: {
     name: 'SoNs of Abraham',
@@ -24,5 +25,11 @@ export default {
       'Over the course of two years, musicians from many different nations participated in the writing and recording of this album, each one bringing a unique flavor from their own culture. Now, as we near the end of 2020, we are delighted to present this final product to you. We hope to use this album as a point of connection between eastern and western cultures, and in particular, spotlight the beauty of the Iraqi heritage. We hope that what we have created together between nations will be a seed planted for new hope, new joy, and new life in the Middle East and beyond.',
     hope:
       'We hope <br /> that what we have created together between nations will be a seed planted for new hope, new joy, and new life in the Middle East and beyond.',
+  },
+
+  footer: {
+    cookie:
+      'This website uses cookies to ensure you get the best experience on our website.',
+    cookieButton: 'Got it!',
   },
 };

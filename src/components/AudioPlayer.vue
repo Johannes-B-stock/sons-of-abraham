@@ -1,14 +1,14 @@
 <template>
-  <div class="level">
+  <div>
     <span
-      class="level-item icon is-size-2"
+      class="icon is-size-2"
       @click="togglePlayback"
       v-bind:class="{ 'is-hidden': playing }"
     >
       <a><i class="fas fa-play-circle"></i> </a>
     </span>
     <span
-      class="level-item icon is-size-2"
+      class="icon is-size-2"
       @click="togglePlayback"
       v-bind:class="{ 'is-hidden': !playing }"
     >
@@ -18,7 +18,8 @@
     </span>
 
     <progress
-      class="mx-4 level-item progress is-primary"
+      class="mx-4 progress is-primary"
+      style="width: 10em"
       v-bind:value="progress * 100"
       max="100"
       >{{ progress * 100 }}%</progress

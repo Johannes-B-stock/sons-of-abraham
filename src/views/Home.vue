@@ -3,21 +3,21 @@
     <section class="homepage-hero is-clipped">
       <div class="layer layer-1"></div>
       <div class="layer layer-2">
-        <div class="is-12 is-vertical has-text-centered">
-          <h1 class="title">{{ $t('cover.name') }}</h1>
+        <div class="layer-content is-12 is-vertical has-text-centered">
           <img
             data-aos="fade-right"
             data-aos-easing="ease-in-sine"
             data-aos-duration="2000"
-            data-aos-delay="200"
+            data-aos-delay="1000"
             class="cover vinyl mb-5 is-hidden-mobile"
             src="../assets/vinyl.png"
           />
           <img
             data-aos="fade-left"
             data-aos-easing="ease-in-sine"
+            data-aos-delay="800"
             class="cover shadow mb-5"
-            src="../assets/CD_SON_2020_cover-notext.jpg"
+            src="../assets/cover.png"
           />
 
           <AlbumButtons />
@@ -64,7 +64,7 @@ export default class Home extends Vue {}
 .homepage-hero {
   height: 100vh;
   position: relative;
-  min-height: 650px;
+  min-height: 550px;
 }
 .homepage-hero .layer {
   position: absolute;
@@ -72,7 +72,7 @@ export default class Home extends Vue {}
   top: 0;
   width: 100%;
   height: 100vh;
-  min-height: 650px;
+  min-height: 550px;
 }
 .homepage-hero h1 {
   padding-top: 20vh;
@@ -87,12 +87,16 @@ export default class Home extends Vue {}
   background-repeat: no-repeat;
   background-size: cover;
 }
+.layer-content {
+  margin-top: 24vh;
+}
 .cover {
-  width: 300px;
-  height: 300px;
+  height: 80vw;
+  max-height: 350px;
+  width: auto;
 }
 .vinyl {
-  margin-right: -400px;
+  margin-right: -500px;
 }
 .shadow {
   box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.5);

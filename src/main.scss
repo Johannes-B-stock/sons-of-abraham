@@ -1,0 +1,52 @@
+// @import url(https://fonts.googleapis.com/css2?family=Lato&display=swap);
+@font-face {
+  font-family: 'Roboto';
+  src: url(./assets/fonts/Roboto-Regular.ttf) format('truetype');
+}
+
+$wine: #c83737ff;
+$grey: #bfc9c8ff;
+$mustard: #e4a44cff;
+$salmon: #f0855fff;
+$pale-salmon: #eca784ff;
+$brown: #9f664bff;
+$beige: #cfb999ff;
+
+$beige-light: #d0d1cd;
+$pink-light: #fa8e68;
+$purple: #8a4d76;
+$beige-lighter: #eff0eb;
+$blue-grey: #97a5ae;
+
+$navbar-color: #c9d1d3;
+
+$pink: $salmon;
+$pink-lighter: $pale-salmon;
+$red: $wine;
+$yellow: $mustard;
+
+$info: $blue-grey;
+
+$blue: $grey;
+$translucent-beige: rgba(207, 185, 153, 0.5);
+$translucent-brown: rgba(195, 102, 75, 0.5);
+
+$custom-colors: (
+  'brown': #9f664b,
+);
+$family-sans-serif: 'Roboto', sans-serif;
+
+$primary: $pink;
+$link: $pink-lighter;
+$light: $beige-light;
+
+// Update some of Bulma's component variables
+$body-background-color: $mustard;
+$dropdown-menu-min-width: 4rem;
+$navbar-dropdown-background-color: $beige-light;
+$control-border-width: 2px;
+$navbar-background-color: transparent;
+$navbar-item-color: white;
+$navbar-item-active-color: grey;
+
+@import '~bulma';

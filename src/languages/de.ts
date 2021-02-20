@@ -4,6 +4,7 @@ export default {
     music: 'Musik',
     lyrics: 'Texte',
     info: 'Info',
+    contact: 'Kontakt',
   },
 
   cover: {
@@ -25,5 +26,11 @@ export default {
       'Im Laufe von zwei Jahren nahmen Musiker aus vielen verschiedenen Nationen am Schreiben und Aufnehmen dieses Albums teil, wobei jedes einen einzigartigen Geschmack aus seiner eigenen Kultur mitbrachte. Jetzt, gegen Ende 2020, freuen wir uns, Ihnen dieses Endprodukt vorstellen zu können. Wir hoffen, dieses Album als Verbindungspunkt zwischen östlichen und westlichen Kulturen zu nutzen und insbesondere die Schönheit des irakischen Erbes herauszustellen. Wir hoffen, dass das, was wir gemeinsam zwischen den Nationen geschaffen haben, ein Keim für neue Hoffnung, neue Freude und neues Leben im Nahen Osten und darüber hinaus sein wird.',
     hope:
       'Wir hoffen, <br/>dass das, was wir gemeinsam zwischen Nationen geschaffen haben, ein Keim für neue Hoffnung, neue Freude und neues Leben im Nahen Osten und darüber hinaus sein wird.',
+  },
+
+  footer: {
+    cookie:
+      'Diese Website benutzt Cookies, um dir das beste Browser Erlebnis zu bieten.',
+    cookieButton: 'Alles klar!',
   },
 };

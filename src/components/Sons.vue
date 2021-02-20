@@ -1,17 +1,20 @@
 <template>
   <section class="section has-background-brown sons">
-    <img class="medium left top" src="../assets/Shapes/Shape-Pale-1.png" />
     <img
-      class="middle medium top pt-5"
-      src="../assets/Shapes/Shape-Wine-2.png"
+      class="medium-large left top"
+      src="../assets/shapes/Shape-Pale-1.png"
+    />
+    <img
+      class="middle medium-large top pt-5"
+      src="../assets/shapes/Shape-Wine-2.png"
     />
     <img
       class="small right bottom mr-6"
-      src="../assets/Shapes/Shape-Wine-3.png"
+      src="../assets/shapes/Shape-Wine-3.png"
     />
     <img
       class="small far-right top pt-6"
-      src="../assets/Shapes/Shape-Mustard-2.png"
+      src="../assets/shapes/Shape-Mustard-2.png"
     />
     <figure class="figure is-726x500" style="position:relative">
       <img src="../assets/SoNs-2019-09.jpg" />
@@ -44,9 +47,10 @@ export default class Sons extends Vue {}
 .far-right {
   right: 0%;
 }
-.medium {
+.medium-large {
   position: absolute;
-  width: 300px;
+  width: 50vw;
+  max-width: 550px;
   height: auto;
 }
 .small {
