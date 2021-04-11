@@ -9,9 +9,12 @@ import VueI18n from 'vue-i18n';
 import en from './languages/en';
 import de from './languages/de';
 import ar from './languages/ar';
+import VueCookies from 'vue-cookies';
 
 Vue.config.productionTip = false;
 Vue.use(VueI18n);
+Vue.use(VueCookies);
+
 // Ready translated locale messages
 const messages = {
   en: en,

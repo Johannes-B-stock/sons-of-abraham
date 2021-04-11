@@ -2,14 +2,20 @@
   <div>
     <span
       class="icon is-size-2"
-      @click="togglePlayback"
+      @click="
+        play();
+        togglePlay();
+      "
       v-bind:class="{ 'is-hidden': playing }"
     >
       <a><i class="fas fa-play-circle"></i> </a>
     </span>
     <span
       class="icon is-size-2"
-      @click="togglePlayback"
+      @click="
+        pause();
+        togglePlay();
+      "
       v-bind:class="{ 'is-hidden': !playing }"
     >
       <a>
@@ -28,11 +34,19 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
-import VueHowler from 'vue-howler';
+import { Component } from 'vue-property-decorator';
+import { mixins } from 'vue-class-component';
+import VueHowler from '../mixins/vue-howler';
+// import { Howl } from 'howler';
 
 @Component({
-  mixins: [VueHowler],
+  // mixins: [VueHowler as any],
 })
-export default class MiniPlayer extends Vue {}
+export default class AudioPlayer extends mixins(VueHowler) {
+  playing = false;
+  togglePlay() {
+    this.playing = !this.playing;
+    this.$emit('play-toggle', this.playing);
+  }
+}
 </script>

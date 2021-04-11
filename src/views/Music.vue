@@ -19,6 +19,12 @@
                 :sources="currentSource"
                 :loop="false"
                 :autoplay="autoplay"
+                :xhrWithCredentials="true"
+                :xhrMethod="'POST'"
+                :xhrHeaders="{ authorization: `Bearer ${token}` }"
+                :html5="true"
+                :formats="format"
+                v-on:play-toggle="playerToggled"
               ></AudioPlayer>
 
               <span class="level-item icon is-size-4" v-on:click="nextSong">
@@ -32,12 +38,22 @@
               class="columns is-mobile has-text-left"
               v-on:click="showLyrics(song.trackNumber)"
             >
-              <div class="column is-1">
+              <div
+                class="column is-1"
+                v-bind:class="{ 'is-hidden': song.isPlaying }"
+              >
                 <span class="icon" v-on:click="playSong(song.trackNumber)">
                   <a class="has-text-info"><i class="fas fa-play"></i> </a>
                 </span>
               </div>
-
+              <div
+                class="column is-1"
+                v-bind:class="{ 'is-hidden': !song.isPlaying }"
+              >
+                <span class="icon" v-on:click="pauseSong()">
+                  <a class="has-text-info"><i class="fas fa-stop"></i> </a>
+                </span>
+              </div>
               <div
                 v-bind:class="{
                   'song-active': lyricsIndex === song.trackNumber - 1,
@@ -75,60 +91,75 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import MiniPlayer from '@/components/MiniPlayer.vue';
 import AudioPlayer from '@/components/AudioPlayer.vue';
 import Song from '@/components/Song.vue';
 import { songs } from '@/content';
+import { store } from '@/router/store';
+// import * as path from 'path';
 
 @Component({
   components: {
-    MiniPlayer,
     AudioPlayer,
     Song,
   },
 })
 export default class Music extends Vue {
   private songs = songs;
+  private token = store.token;
+
   private songTitle = '';
   private lyrics = '';
   private songIndex = 0;
+  private format = ['mp3'];
   private lyricsIndex = -1;
   private autoplay = false;
-  private allAudioSources = [
-    '/music/01-Trust in God_short.mp3',
-    '/music/02-Sing a new Song_short.mp3',
-    '/music/03-Camel_short.mp3',
-    '/music/04-The Alpha and Omega_short.mp3',
-    '/music/05-Perfect Love_short.mp3',
-    '/music/06-Your Glory_short.mp3',
-    '/music/07-Great in Power_short.mp3',
-    '/music/08-Anta Yasu_short.mp3',
-    '/music/09-Perfect Love (English version)_short.mp3',
-    '/music/10-Hallelu et Adoni_short.mp3',
-    '/music/11-Come to the waters, He is calling you_short.mp3',
-  ];
-  private currentSource = [this.allAudioSources[this.songIndex]];
+  host = process.env.AUDIO_SERVER ?? 'http://localhost:8000';
+  url = this.host + '/song/';
+  private currentSource = [this.url + this.songIndex];
+
   nextSong() {
+    this.songs[this.songIndex].isPlaying = false;
     this.songIndex++;
     this.autoplay = true;
-    if (this.songIndex >= this.allAudioSources.length) {
+    if (this.songIndex >= 11) {
       this.songIndex = 0;
     }
-    this.currentSource = [this.allAudioSources[this.songIndex]];
+    this.refreshSource();
   }
+  private refreshSource() {
+    this.songs[this.songIndex].isPlaying = true;
+    this.currentSource = [this.url + this.songIndex];
+  }
+
   previousSong() {
+    this.songs[this.songIndex].isPlaying = false;
     this.songIndex--;
     this.autoplay = true;
     if (this.songIndex < 0) {
       this.songIndex = 0;
     }
-    this.currentSource = [this.allAudioSources[this.songIndex]];
+    this.refreshSource();
   }
   playSong(track: number) {
+    console.log(this.token);
+    this.songs[this.songIndex].isPlaying = false;
     this.songIndex = track - 1;
     this.songTitle = this.songs[this.songIndex].titleEn;
     this.autoplay = true;
-    this.currentSource = [this.allAudioSources[this.songIndex]];
+
+    this.refreshSource();
+  }
+  pauseSong() {
+    this.songs[this.songIndex].isPlaying = false;
+    this.currentSource = ['notValid.mp3'];
+  }
+  playerToggled(playing: boolean) {
+    const song = this.songs[this.songIndex];
+    song.isPlaying = playing;
+    if (this.currentSource.includes('notValid.mp3')) {
+      this.refreshSource();
+    }
+    this.$set(this.songs, this.songIndex, song);
   }
   showLyrics(track: number) {
     this.lyricsIndex = track - 1;
