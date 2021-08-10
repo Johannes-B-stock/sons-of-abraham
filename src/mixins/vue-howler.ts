@@ -136,6 +136,7 @@ export default class VueHowler extends VueHowlerProps {
     {
       name: 'load',
       hook: () => {
+        console.log('loaded');
         this.duration = this._howl?.duration() ?? 0;
       },
     },
@@ -145,6 +146,7 @@ export default class VueHowler extends VueHowlerProps {
       name: 'play',
       hook: () => {
         this.playing = true;
+        console.log('playing');
       },
     },
     {

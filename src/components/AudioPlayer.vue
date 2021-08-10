@@ -22,14 +22,6 @@
         <i class="fas fa-pause-circle"></i>
       </a>
     </span>
-
-    <progress
-      class="mx-4 progress is-primary"
-      style="width: 10em"
-      v-bind:value="progress * 100"
-      max="100"
-      >{{ progress * 100 }}%</progress
-    >
   </div>
 </template>
 
@@ -37,11 +29,8 @@
 import { Component } from 'vue-property-decorator';
 import { mixins } from 'vue-class-component';
 import VueHowler from '../mixins/vue-howler';
-// import { Howl } from 'howler';
 
-@Component({
-  // mixins: [VueHowler as any],
-})
+@Component({})
 export default class AudioPlayer extends mixins(VueHowler) {
   playing = false;
   togglePlay() {

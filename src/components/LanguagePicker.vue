@@ -35,7 +35,7 @@ import { Component, Vue } from 'vue-property-decorator';
 @Component({})
 export default class LanguagePicker extends Vue {
   langs = ['en', 'de', 'ar'];
-  selectedLang = this.langs[0];
+  selectedLang = this.$i18n.locale;
   dropdown = false;
 
   mounted() {
@@ -50,6 +50,7 @@ export default class LanguagePicker extends Vue {
     this.dropdown = false;
     this.selectedLang = lang;
     this.$root.$i18n.locale = lang;
+    this.$cookies.set('locale', lang);
   }
   close(ev: MouseEvent) {
     const target = ev.target;

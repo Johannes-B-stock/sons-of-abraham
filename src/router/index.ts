@@ -8,6 +8,8 @@ import { store } from './store';
 
 Vue.use(VueRouter);
 
+const audioServer = process.env.AUDIO_SERVER ?? 'http://localhost:8000';
+
 const routes: Array<RouteConfig> = [
   {
     path: '/',
@@ -69,7 +71,7 @@ router.beforeEach(async (to, from, next) => {
     store.token = token;
   }
   if (hash !== undefined && hash.length > 0) {
-    const tokenResultPromise = axios.post('http://localhost:8000/token', {
+    const tokenResultPromise = axios.post(`${audioServer}/token`, {
       hash: hash,
     });
     tokenResultPromise.catch(() => console.log('wrong hash'));

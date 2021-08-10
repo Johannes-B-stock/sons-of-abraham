@@ -1,15 +1,15 @@
 <template>
   <div>
-    <section class=" has-background-primary">
+    <section class="has-background-primary">
       <img class="torbogen" src="../assets/torbogen.png" />
     </section>
     <section class="has-background-light">
       <div class="columns is-gapless is-multiline">
         <div class="column is-5 beige">
           <div class="column-content-left">
-            <div class="level">
+            <div class="level is-mobile buttons">
               <span
-                class="level-item has-text-success icon is-size-4"
+                class="level-item has-text-success icon is-size-3"
                 v-on:click="previousSong"
               >
                 <a><i class="fas fa-angle-double-left"></i></a>
@@ -27,7 +27,7 @@
                 v-on:play-toggle="playerToggled"
               ></AudioPlayer>
 
-              <span class="level-item icon is-size-4" v-on:click="nextSong">
+              <span class="level-item icon is-size-3" v-on:click="nextSong">
                 <a><i class="fas fa-angle-double-right"></i></a>
               </span>
             </div>
@@ -60,7 +60,7 @@
                 }"
                 class="column song-title is-11"
               >
-                {{ song.titleEn }}
+                {{ song['title' + locale] }}
               </div>
             </div>
           </div>
@@ -107,50 +107,66 @@ export default class Music extends Vue {
   private songs = songs;
   private token = store.token;
 
-  private songTitle = '';
-  private lyrics = '';
+  private locale = this.capitalizeFirstLetter(this.$i18n.locale);
   private songIndex = 0;
+  private songTitle = this.songs[this.songIndex]['title' + this.locale];
+  private lyrics = this.songs[this.songIndex]['text' + this.locale];
   private format = ['mp3'];
-  private lyricsIndex = -1;
+  private lyricsIndex = 0;
   private autoplay = false;
   host = process.env.AUDIO_SERVER ?? 'http://localhost:8000';
   url = this.host + '/song/';
   private currentSource = [this.url + this.songIndex];
 
   nextSong() {
+    const wasAlreadyplaying = this.songs[this.songIndex].isPlaying;
     this.songs[this.songIndex].isPlaying = false;
     this.songIndex++;
-    this.autoplay = true;
+    this.currentSource = ['notValid.mp3'];
+    this.refreshSource();
+
+    this.autoplay = wasAlreadyplaying ?? false;
     if (this.songIndex >= 11) {
       this.songIndex = 0;
     }
     this.refreshSource();
+
+    this.showLyrics(this.songIndex + 1);
+    this.songs[this.songIndex].isPlaying = wasAlreadyplaying;
   }
   private refreshSource() {
-    this.songs[this.songIndex].isPlaying = true;
     this.currentSource = [this.url + this.songIndex];
   }
 
   previousSong() {
+    const wasAlreadyplaying = this.songs[this.songIndex].isPlaying;
     this.songs[this.songIndex].isPlaying = false;
     this.songIndex--;
-    this.autoplay = true;
+    wasAlreadyplaying && (this.autoplay = true);
     if (this.songIndex < 0) {
       this.songIndex = 0;
     }
     this.refreshSource();
+
+    this.songs[this.songIndex].isPlaying = wasAlreadyplaying;
+    this.showLyrics(this.songIndex);
   }
   playSong(track: number) {
-    console.log(this.token);
+    const wasAlreadyplaying = this.songs[this.songIndex].isPlaying;
     this.songs[this.songIndex].isPlaying = false;
     this.songIndex = track - 1;
     this.songTitle = this.songs[this.songIndex].titleEn;
-    this.autoplay = true;
 
+    this.autoplay = wasAlreadyplaying ?? false;
+
+    this.songs[this.songIndex].isPlaying = wasAlreadyplaying;
     this.refreshSource();
+    this.showLyrics(track);
   }
   pauseSong() {
     this.songs[this.songIndex].isPlaying = false;
+    this.autoplay = false;
+
     this.currentSource = ['notValid.mp3'];
   }
   playerToggled(playing: boolean) {
@@ -163,11 +179,17 @@ export default class Music extends Vue {
   }
   showLyrics(track: number) {
     this.lyricsIndex = track - 1;
-    this.songTitle = this.songs[this.lyricsIndex].titleEn;
-    this.lyrics = this.songs[this.lyricsIndex].textEn.replace(
+    this.locale = this.capitalizeFirstLetter(this.$i18n.locale);
+    const song = this.songs[this.lyricsIndex];
+    this.songTitle = song['title' + this.locale] ?? song.titleEn;
+    this.lyrics = (song['text' + this.locale] ?? song.textEn).replace(
       /(?:\r\n|\r|\n)/g,
       '<br>'
     );
+  }
+
+  capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
   }
 }
 </script>
@@ -188,6 +210,9 @@ export default class Music extends Vue {
 }
 .grey-blue {
   background-color: #a8b6be;
+}
+.buttons {
+  margin: 0% 30%;
 }
 
 .column-content {
