@@ -114,7 +114,7 @@ export default class Music extends Vue {
   private format = ['mp3'];
   private lyricsIndex = 0;
   private autoplay = false;
-  host = process.env.AUDIO_SERVER ?? 'http://localhost:8000';
+  host = 'https://sons-audio-server.herokuapp.com/';
   url = this.host + '/song/';
   private currentSource = [this.url + this.songIndex];
 
