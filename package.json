@@ -1,6 +1,6 @@
 {
   "name": "sons-of-abraham",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "private": true,
   "author": {
     "name": "Johannes Birkenstock"
@@ -60,7 +60,7 @@
   },
   "_id": "sons-of-abraham@",
   "engines": {
-    "node": ">=10.x"
+    "node": ">=12.x"
   },
   "gitHooks": {
     "pre-commit": "lint-staged"
