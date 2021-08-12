@@ -8,7 +8,7 @@ import { store } from './store';
 
 Vue.use(VueRouter);
 
-const audioServer = process.env.AUDIO_SERVER ?? 'http://localhost:8000';
+const audioServer = 'https://sons-audio-server.herokuapp.com/';
 
 const routes: Array<RouteConfig> = [
   {
