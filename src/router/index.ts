@@ -8,7 +8,7 @@ import { store } from './store';
 
 Vue.use(VueRouter);
 
-const audioServer = 'https://sons-audio-server.herokuapp.com/';
+const audioServer = 'https://sons-audio-server.herokuapp.com';
 
 const routes: Array<RouteConfig> = [
   {
