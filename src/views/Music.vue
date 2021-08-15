@@ -22,6 +22,7 @@
                 :xhrWithCredentials="true"
                 :xhrMethod="'POST'"
                 :xhrHeaders="{ authorization: `Bearer ${token}` }"
+                :html5="true"
                 :formats="format"
                 v-on:play-toggle="playerToggled"
               ></AudioPlayer>
