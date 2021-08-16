@@ -19,9 +19,6 @@
                 :sources="currentSource"
                 :loop="false"
                 :autoplay="autoplay"
-                :xhrWithCredentials="true"
-                :xhrMethod="'POST'"
-                :xhrHeaders="{ authorization: `Bearer ${token}` }"
                 :html5="true"
                 :formats="format"
                 v-on:play-toggle="playerToggled"
@@ -114,9 +111,9 @@ export default class Music extends Vue {
   private format = ['mp3'];
   private lyricsIndex = 0;
   private autoplay = false;
-  host = 'https://sons-audio-server.herokuapp.com';
+  host = process.env.VUE_APP_AUDIO_SERVER ?? 'http://localhost:8000';
   url = this.host + '/song/';
-  private currentSource = [this.url + this.songIndex];
+  private currentSource = [this.url + this.songIndex + '/full'];
 
   nextSong() {
     const wasAlreadyplaying = this.songs[this.songIndex].isPlaying;
@@ -135,7 +132,7 @@ export default class Music extends Vue {
     this.songs[this.songIndex].isPlaying = wasAlreadyplaying;
   }
   private refreshSource() {
-    this.currentSource = [this.url + this.songIndex];
+    this.currentSource = [this.url + this.songIndex + '/full'];
   }
 
   previousSong() {
