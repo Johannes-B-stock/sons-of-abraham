@@ -12,6 +12,7 @@ export default {
       listen: 'Reinhören',
       more: 'Mehr erfahren',
       lyrics: 'Liedtexte lesen',
+      buy: 'Jetzt kaufen',
     },
   },
 
@@ -32,5 +33,14 @@ export default {
     cookie:
       'Diese Website benutzt Cookies, um dir das beste Browser Erlebnis zu bieten.',
     cookieButton: 'Alles klar!',
+  },
+
+  contact: {
+    name: 'Name',
+    email: 'Email',
+    emailPlaceholder: 'Wie können wir dir antworten?',
+    message: 'Nachricht',
+    messagePlaceholder: 'Was möchtest du uns sagen?',
+    submit: 'Absenden',
   },
 };

@@ -12,6 +12,7 @@ export default {
       listen: 'Listen now',
       more: 'Know more',
       lyrics: 'Read lyrics',
+      buy: 'Buy now',
     },
   },
   about: {
@@ -31,5 +32,14 @@ export default {
     cookie:
       'This website uses cookies to ensure you get the best experience on our website.',
     cookieButton: 'Got it!',
+  },
+
+  contact: {
+    name: 'Name',
+    email: 'Email',
+    emailPlaceholder: 'How can we reply to you?',
+    message: 'Message',
+    messagePlaceholder: 'What do you want to tell us?',
+    submit: 'Submit',
   },
 };
