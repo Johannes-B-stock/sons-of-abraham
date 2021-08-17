@@ -1,5 +1,8 @@
 <template>
-  <div class="dropdown is-right" v-bind:class="{ 'is-active': dropdown }">
+  <div
+    class="dropdown is-right"
+    :class="{ 'is-active': dropdown, 'is-up': up }"
+  >
     <div class="dropdown-trigger">
       <button
         class="button"
@@ -32,10 +35,12 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 
-@Component({})
+@Component({
+  props: ['up'],
+})
 export default class LanguagePicker extends Vue {
   langs = ['en', 'de', 'ar'];
-  selectedLang = this.langs[0];
+  selectedLang = this.$i18n.locale;
   dropdown = false;
 
   mounted() {
@@ -50,11 +55,18 @@ export default class LanguagePicker extends Vue {
     this.dropdown = false;
     this.selectedLang = lang;
     this.$root.$i18n.locale = lang;
+    this.$cookies.set('locale', lang);
   }
   close(ev: MouseEvent) {
+    console.log('closing');
     const target = ev.target;
-    if (target instanceof Node && !this.$el.contains(target)) {
+    if (
+      target instanceof Node &&
+      !this.$el.contains(target) &&
+      window.innerWidth > 1000
+    ) {
       this.dropdown = false;
+      console.log('dropdown false');
     }
   }
 }

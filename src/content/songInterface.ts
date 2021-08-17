@@ -4,4 +4,5 @@ export interface SongInfo {
   textEn: string;
   textAr: string;
   trackNumber: number;
+  isPlaying?: boolean;
 }

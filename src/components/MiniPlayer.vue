@@ -21,10 +21,11 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import VueHowler from 'vue-howler';
+// import { VueHowler } from '../mixins/vue-howler';
+// import VueHowler from 'vue-howler';
 
 @Component({
-  mixins: [VueHowler],
+  // mixins: [VueHowler as any],
 })
 export default class MiniPlayer extends Vue {}
 </script>

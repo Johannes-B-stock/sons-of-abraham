@@ -1,15 +1,15 @@
 <template>
   <div>
-    <section class=" has-background-primary">
+    <section class="has-background-primary">
       <img class="torbogen" src="../assets/torbogen.png" />
     </section>
     <section class="has-background-light">
       <div class="columns is-gapless is-multiline">
         <div class="column is-5 beige">
           <div class="column-content-left">
-            <div class="level">
+            <div class="level is-mobile buttons">
               <span
-                class="level-item has-text-success icon is-size-4"
+                class="level-item has-text-success icon is-size-3"
                 v-on:click="previousSong"
               >
                 <a><i class="fas fa-angle-double-left"></i></a>
@@ -19,9 +19,12 @@
                 :sources="currentSource"
                 :loop="false"
                 :autoplay="autoplay"
+                :html5="true"
+                :formats="format"
+                v-on:play-toggle="playerToggled"
               ></AudioPlayer>
 
-              <span class="level-item icon is-size-4" v-on:click="nextSong">
+              <span class="level-item icon is-size-3" v-on:click="nextSong">
                 <a><i class="fas fa-angle-double-right"></i></a>
               </span>
             </div>
@@ -32,19 +35,29 @@
               class="columns is-mobile has-text-left"
               v-on:click="showLyrics(song.trackNumber)"
             >
-              <div class="column is-1">
+              <div
+                class="column is-1"
+                v-bind:class="{ 'is-hidden': song.isPlaying }"
+              >
                 <span class="icon" v-on:click="playSong(song.trackNumber)">
                   <a class="has-text-info"><i class="fas fa-play"></i> </a>
                 </span>
               </div>
-
+              <div
+                class="column is-1"
+                v-bind:class="{ 'is-hidden': !song.isPlaying }"
+              >
+                <span class="icon" v-on:click="pauseSong()">
+                  <a class="has-text-info"><i class="fas fa-stop"></i> </a>
+                </span>
+              </div>
               <div
                 v-bind:class="{
                   'song-active': lyricsIndex === song.trackNumber - 1,
                 }"
                 class="column song-title is-11"
               >
-                {{ song.titleEn }}
+                {{ song['title' + locale] }}
               </div>
             </div>
           </div>
@@ -75,68 +88,105 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import MiniPlayer from '@/components/MiniPlayer.vue';
 import AudioPlayer from '@/components/AudioPlayer.vue';
 import Song from '@/components/Song.vue';
 import { songs } from '@/content';
+import { store } from '@/router/store';
+// import * as path from 'path';
 
 @Component({
   components: {
-    MiniPlayer,
     AudioPlayer,
     Song,
   },
 })
 export default class Music extends Vue {
   private songs = songs;
-  private songTitle = '';
-  private lyrics = '';
+  private token = store.token;
+
+  private locale = this.capitalizeFirstLetter(this.$i18n.locale);
   private songIndex = 0;
-  private lyricsIndex = -1;
+  private songTitle = this.songs[this.songIndex]['title' + this.locale];
+  private lyrics = this.songs[this.songIndex]['text' + this.locale];
+  private format = ['mp3'];
+  private lyricsIndex = 0;
   private autoplay = false;
-  private allAudioSources = [
-    '/music/01-Trust in God_short.mp3',
-    '/music/02-Sing a new Song_short.mp3',
-    '/music/03-Camel_short.mp3',
-    '/music/04-The Alpha and Omega_short.mp3',
-    '/music/05-Perfect Love_short.mp3',
-    '/music/06-Your Glory_short.mp3',
-    '/music/07-Great in Power_short.mp3',
-    '/music/08-Anta Yasu_short.mp3',
-    '/music/09-Perfect Love (English version)_short.mp3',
-    '/music/10-Hallelu et Adoni_short.mp3',
-    '/music/11-Come to the waters, He is calling you_short.mp3',
-  ];
-  private currentSource = [this.allAudioSources[this.songIndex]];
+  host = process.env.VUE_APP_AUDIO_SERVER ?? 'http://localhost:8000';
+  url = this.host + '/song/';
+  private currentSource = [this.url + this.songIndex + '/full'];
+
   nextSong() {
+    const wasAlreadyplaying = this.songs[this.songIndex].isPlaying;
+    this.songs[this.songIndex].isPlaying = false;
     this.songIndex++;
-    this.autoplay = true;
-    if (this.songIndex >= this.allAudioSources.length) {
+    this.currentSource = ['notValid.mp3'];
+    this.refreshSource();
+
+    this.autoplay = wasAlreadyplaying ?? false;
+    if (this.songIndex >= 11) {
       this.songIndex = 0;
     }
-    this.currentSource = [this.allAudioSources[this.songIndex]];
+    this.refreshSource();
+
+    this.showLyrics(this.songIndex + 1);
+    this.songs[this.songIndex].isPlaying = wasAlreadyplaying;
   }
+  private refreshSource() {
+    this.currentSource = [this.url + this.songIndex + '/full'];
+  }
+
   previousSong() {
+    const wasAlreadyplaying = this.songs[this.songIndex].isPlaying;
+    this.songs[this.songIndex].isPlaying = false;
     this.songIndex--;
-    this.autoplay = true;
+    wasAlreadyplaying && (this.autoplay = true);
     if (this.songIndex < 0) {
       this.songIndex = 0;
     }
-    this.currentSource = [this.allAudioSources[this.songIndex]];
+    this.refreshSource();
+
+    this.songs[this.songIndex].isPlaying = wasAlreadyplaying;
+    this.showLyrics(this.songIndex);
   }
   playSong(track: number) {
+    const wasAlreadyplaying = this.songs[this.songIndex].isPlaying;
+    this.songs[this.songIndex].isPlaying = false;
     this.songIndex = track - 1;
     this.songTitle = this.songs[this.songIndex].titleEn;
-    this.autoplay = true;
-    this.currentSource = [this.allAudioSources[this.songIndex]];
+
+    this.autoplay = wasAlreadyplaying ?? false;
+
+    this.songs[this.songIndex].isPlaying = wasAlreadyplaying;
+    this.refreshSource();
+    this.showLyrics(track);
+  }
+  pauseSong() {
+    this.songs[this.songIndex].isPlaying = false;
+    this.autoplay = false;
+
+    this.currentSource = ['notValid.mp3'];
+  }
+  playerToggled(playing: boolean) {
+    const song = this.songs[this.songIndex];
+    song.isPlaying = playing;
+    if (this.currentSource.includes('notValid.mp3')) {
+      this.refreshSource();
+    }
+    this.$set(this.songs, this.songIndex, song);
   }
   showLyrics(track: number) {
     this.lyricsIndex = track - 1;
-    this.songTitle = this.songs[this.lyricsIndex].titleEn;
-    this.lyrics = this.songs[this.lyricsIndex].textEn.replace(
+    this.locale = this.capitalizeFirstLetter(this.$i18n.locale);
+    const song = this.songs[this.lyricsIndex];
+    this.songTitle = song['title' + this.locale] ?? song.titleEn;
+    this.lyrics = (song['text' + this.locale] ?? song.textEn).replace(
       /(?:\r\n|\r|\n)/g,
       '<br>'
     );
+  }
+
+  capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
   }
 }
 </script>
@@ -157,6 +207,9 @@ export default class Music extends Vue {
 }
 .grey-blue {
   background-color: #a8b6be;
+}
+.buttons {
+  margin: 0% 30%;
 }
 
 .column-content {
