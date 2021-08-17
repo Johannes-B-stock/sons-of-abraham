@@ -125,7 +125,7 @@ export default {
 }
 .form-content {
   margin: 10% 20%;
-  min-width: 300px;
+  max-width: 450px;
 }
 
 .wall-background {
