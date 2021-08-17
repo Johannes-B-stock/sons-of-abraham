@@ -13,8 +13,11 @@
       <span>{{ $t('cover.buttons.more') }}</span>
     </a>
 
-    <a class="button button-light" href="/lyrics">
-      <span>{{ $t('cover.buttons.lyrics') }}</span>
+    <a
+      class="button button-light"
+      href="https://geo.music.apple.com/us/album/sons-of-abraham/1563538824?itsct=music_box_link&itscg=30200&ct=albums_so_ns_of_abraham&ls=1&app=music"
+    >
+      <span>{{ $t('cover.buttons.buy') }}</span>
     </a>
   </div>
 </template>
