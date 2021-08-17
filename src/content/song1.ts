@@ -2,8 +2,19 @@ import { SongInfo } from './songInterface';
 
 export const song1: SongInfo = {
   titleEn: 'Trust in God',
+  titleDe: 'Trust in God',
   titleAr: 'ثق بالله',
   textEn: `May the Lord answer us in times of distress
+May He send us help from His sanctuary
+
+Some trust in chariots and some in horses, but we trust in the
+name of the Lord our God
+
+They are brought to their knees, but we rise up
+May the King answer us when we call
+
+God will not forsake me, in the day of danger He was my shield`,
+  textDe: `May the Lord answer us in times of distress
 May He send us help from His sanctuary
 
 Some trust in chariots and some in horses, but we trust in the
