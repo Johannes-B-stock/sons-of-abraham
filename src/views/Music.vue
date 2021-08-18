@@ -91,8 +91,6 @@ import { Component, Vue } from 'vue-property-decorator';
 import AudioPlayer from '@/components/AudioPlayer.vue';
 import Song from '@/components/Song.vue';
 import { songs } from '@/content';
-import { store } from '@/router/store';
-// import * as path from 'path';
 
 @Component({
   components: {
@@ -102,18 +100,20 @@ import { store } from '@/router/store';
 })
 export default class Music extends Vue {
   private songs = songs;
-  private token = store.token;
 
   private locale = this.capitalizeFirstLetter(this.$i18n.locale);
+  private lyricsIndex = 0;
   private songIndex = 0;
   private songTitle = this.songs[this.songIndex]['title' + this.locale];
-  private lyrics = this.songs[this.songIndex]['text' + this.locale];
   private format = ['mp3'];
-  private lyricsIndex = 0;
   private autoplay = false;
   host = process.env.VUE_APP_AUDIO_SERVER ?? 'http://localhost:8000';
   url = this.host + '/song/';
   private currentSource = [this.url + this.songIndex + '/full'];
+  private lyrics = this.songs[this.lyricsIndex]['text' + this.locale].replace(
+    /(?:\r\n|\r|\n)/g,
+    '<br>'
+  );
 
   nextSong() {
     const wasAlreadyplaying = this.songs[this.songIndex].isPlaying;
@@ -179,7 +179,13 @@ export default class Music extends Vue {
     this.locale = this.capitalizeFirstLetter(this.$i18n.locale);
     const song = this.songs[this.lyricsIndex];
     this.songTitle = song['title' + this.locale] ?? song.titleEn;
-    this.lyrics = (song['text' + this.locale] ?? song.textEn).replace(
+    this.lyrics = this.getLyrics();
+  }
+
+  private getLyrics(): any {
+    if (!this.songs) return '';
+    const song = this.songs[this.lyricsIndex];
+    return (song['text' + this.locale] ?? song.textEn).replace(
       /(?:\r\n|\r|\n)/g,
       '<br>'
     );

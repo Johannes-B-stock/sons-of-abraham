@@ -58,7 +58,6 @@ export default class LanguagePicker extends Vue {
     this.$cookies.set('locale', lang);
   }
   close(ev: MouseEvent) {
-    console.log('closing');
     const target = ev.target;
     if (
       target instanceof Node &&
@@ -66,7 +65,6 @@ export default class LanguagePicker extends Vue {
       window.innerWidth > 1000
     ) {
       this.dropdown = false;
-      console.log('dropdown false');
     }
   }
 }
