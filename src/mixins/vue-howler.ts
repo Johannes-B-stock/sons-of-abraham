@@ -153,6 +153,7 @@ export default class VueHowler extends VueHowlerProps {
       name: 'end',
       hook: () => {
         this.playing = false;
+        console.log('ended');
       },
     },
     {
@@ -207,6 +208,7 @@ export default class VueHowler extends VueHowlerProps {
 
   @Watch('playing')
   onPlayingChanged(value: boolean, oldValue: boolean) {
+    console.log('playing changed fromo ' + oldValue + ' to ' + value);
     // Update the seek
     this.seek = +(this._howl?.seek() ?? 0);
 

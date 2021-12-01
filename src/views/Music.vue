@@ -33,7 +33,7 @@
               v-for="song of songs"
               v-bind:key="song.trackNumber"
               class="columns is-mobile has-text-left"
-              v-on:click="showLyrics(song.trackNumber)"
+              v-on:click="setLyrics(song.trackNumber)"
             >
               <div
                 class="column is-1"
@@ -91,6 +91,7 @@ import { Component, Vue } from 'vue-property-decorator';
 import AudioPlayer from '@/components/AudioPlayer.vue';
 import Song from '@/components/Song.vue';
 import { songs } from '@/content';
+import { SongInfo } from '@/content/songInterface';
 
 @Component({
   components: {
@@ -104,16 +105,23 @@ export default class Music extends Vue {
   private locale = this.capitalizeFirstLetter(this.$i18n.locale);
   private lyricsIndex = 0;
   private songIndex = 0;
-  private songTitle = this.songs[this.songIndex]['title' + this.locale];
+  private songTitle = '';
   private format = ['mp3'];
   private autoplay = false;
   host = process.env.VUE_APP_AUDIO_SERVER ?? 'http://localhost:8000';
   url = this.host + '/song/';
-  private currentSource = [this.url + this.songIndex + '/full'];
-  private lyrics = this.songs[this.lyricsIndex]['text' + this.locale].replace(
-    /(?:\r\n|\r|\n)/g,
-    '<br>'
-  );
+  private currentSource: string[] = [];
+  private lyrics = '';
+
+  created() {
+    this.initialize();
+  }
+
+  initialize() {
+    this.songTitle = this.getSongTitle();
+    this.currentSource = [this.url + this.songIndex + '/full'];
+    this.lyrics = this.getLyrics();
+  }
 
   nextSong() {
     const wasAlreadyplaying = this.songs[this.songIndex].isPlaying;
@@ -128,7 +136,7 @@ export default class Music extends Vue {
     }
     this.refreshSource();
 
-    this.showLyrics(this.songIndex + 1);
+    this.setLyrics();
     this.songs[this.songIndex].isPlaying = wasAlreadyplaying;
   }
   private refreshSource() {
@@ -139,33 +147,39 @@ export default class Music extends Vue {
     const wasAlreadyplaying = this.songs[this.songIndex].isPlaying;
     this.songs[this.songIndex].isPlaying = false;
     this.songIndex--;
+    this.lyricsIndex--;
     wasAlreadyplaying && (this.autoplay = true);
     if (this.songIndex < 0) {
       this.songIndex = 0;
+      this.lyricsIndex = 0;
     }
     this.refreshSource();
 
     this.songs[this.songIndex].isPlaying = wasAlreadyplaying;
-    this.showLyrics(this.songIndex);
+    this.setLyrics();
   }
+
   playSong(track: number) {
     const wasAlreadyplaying = this.songs[this.songIndex].isPlaying;
     this.songs[this.songIndex].isPlaying = false;
     this.songIndex = track - 1;
+    this.lyricsIndex = track - 1;
     this.songTitle = this.songs[this.songIndex].titleEn;
 
     this.autoplay = wasAlreadyplaying ?? false;
 
     this.songs[this.songIndex].isPlaying = wasAlreadyplaying;
     this.refreshSource();
-    this.showLyrics(track);
+    this.setLyrics();
   }
+
   pauseSong() {
     this.songs[this.songIndex].isPlaying = false;
     this.autoplay = false;
 
     this.currentSource = ['notValid.mp3'];
   }
+
   playerToggled(playing: boolean) {
     const song = this.songs[this.songIndex];
     song.isPlaying = playing;
@@ -174,15 +188,23 @@ export default class Music extends Vue {
     }
     this.$set(this.songs, this.songIndex, song);
   }
-  showLyrics(track: number) {
-    this.lyricsIndex = track - 1;
+
+  setLyrics(track = -1) {
+    console.log(track);
+    if (track > -1) {
+      this.lyricsIndex = track - 1;
+    }
     this.locale = this.capitalizeFirstLetter(this.$i18n.locale);
-    const song = this.songs[this.lyricsIndex];
-    this.songTitle = song['title' + this.locale] ?? song.titleEn;
+    this.songTitle = this.getSongTitle();
     this.lyrics = this.getLyrics();
   }
 
-  private getLyrics(): any {
+  private getSongTitle(): string {
+    const song = this.songs[this.lyricsIndex];
+    return song['title' + this.locale] ?? song.titleEn;
+  }
+
+  private getLyrics(): string {
     if (!this.songs) return '';
     const song = this.songs[this.lyricsIndex];
     return (song['text' + this.locale] ?? song.textEn).replace(
