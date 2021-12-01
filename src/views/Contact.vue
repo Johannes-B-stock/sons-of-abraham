@@ -5,10 +5,7 @@
     >
       <div class="container is-max-desktop mt-6">
         <div class="text ml-6">
-          <span class="big-letters">
-            We want <br />
-            to hear from you
-          </span>
+          <span class="big-letters" v-html="$t('contact.header')"> </span>
         </div>
       </div>
     </section>
@@ -18,6 +15,9 @@
     <div class="columns ">
       <div class="column is-three-fifths has-background-primary">
         <div class="container has-text-left form-content">
+          <div class="additional-info has-text-light">
+            {{ $t('contact.info') }}
+          </div>
           <form class="contact-form big-letters" @submit.prevent="sendEmail">
             <div class="field">
               <label class="label">{{ $t('contact.name') }}</label>
@@ -84,9 +84,7 @@
         style="max-width:300px"
       >
         <div class="text ml-6 pl-6">
-          <span class="big-letters">
-            Thanks <br />for <br />visiting <br />us
-          </span>
+          <span class="big-letters" v-html="$t('contact.footer')"> </span>
         </div>
       </div>
     </section>
@@ -132,5 +130,9 @@ export default {
   background-image: url(../assets/wall.jpeg);
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+.additional-info {
+  margin: 15px 0px;
 }
 </style>

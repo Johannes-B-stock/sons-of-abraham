@@ -41,5 +41,9 @@ export default {
     message: 'Message',
     messagePlaceholder: 'What do you want to tell us?',
     submit: 'Submit',
+    header: 'We want <br>to hear from you',
+    footer: 'Thanks <br />for <br />visiting <br />us',
+    info:
+      'If you have any question/ suggestion, feel free to contact us. We’ll get back to you as soon as we can.',
   },
 };

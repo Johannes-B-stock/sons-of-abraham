@@ -10,6 +10,7 @@ import en from './languages/en';
 import de from './languages/de';
 import ar from './languages/ar';
 import VueCookies from 'vue-cookies';
+import cz from './languages/cz';
 
 Vue.config.productionTip = false;
 Vue.use(VueI18n);
@@ -20,6 +21,7 @@ const messages = {
   en: en,
   de: de,
   ar: ar,
+  cz: cz,
 };
 
 // Create VueI18n instance with options
