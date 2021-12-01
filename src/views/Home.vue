@@ -1,30 +1,37 @@
 <template>
   <div>
-    <section class="homepage-hero is-clipped">
+    <section class="hero is-clipped is-fullheight-with-navbar">
       <div class="layer layer-1"></div>
-      <div class="layer layer-2">
-        <div class="layer-content is-12 is-vertical has-text-centered">
-          <img
-            data-aos="fade-right"
-            data-aos-easing="ease-in-sine"
-            data-aos-duration="2000"
-            data-aos-delay="1000"
-            class="cover vinyl mb-5 is-hidden-mobile"
-            src="../assets/vinyl.png"
-          />
-          <img
-            data-aos="fade-left"
-            data-aos-easing="ease-in-sine"
-            data-aos-delay="800"
-            class="cover shadow mb-5"
-            src="../assets/cover.png"
-          />
 
-          <AlbumButtons />
+      <div class="hero-body">
+        <div class="container has-text-centered">
+          <div class="is-12 is-vertical has-text-centered">
+            <img
+              data-aos="fade-right"
+              data-aos-easing="ease-in-sine"
+              data-aos-duration="2000"
+              data-aos-delay="1000"
+              class="cover vinyl mb-5 is-hidden-mobile"
+              src="../assets/vinyl.png"
+            />
+            <img
+              data-aos="fade-left"
+              data-aos-easing="ease-in-sine"
+              data-aos-delay="800"
+              class="cover shadow mb-5"
+              src="../assets/cover.png"
+            />
+
+            <AlbumButtons />
+          </div>
         </div>
-        <span class="icon is-size-3 arrow-down-icon">
-          <a href="#what-about"><i class="fas fa-arrow-down primary"></i></a>
-        </span>
+      </div>
+      <div class="hero-foot">
+        <div class="container">
+          <span class="icon is-size-3 arrow-down-icon">
+            <a href="#what-about"><i class="fas fa-arrow-down primary"></i></a>
+          </span>
+        </div>
       </div>
     </section>
     <WhatAbout />
@@ -66,7 +73,7 @@ export default class Home extends Vue {}
   position: relative;
   min-height: 550px;
 }
-.homepage-hero .layer {
+.layer {
   position: absolute;
   left: 0;
   top: 0;
@@ -76,10 +83,6 @@ export default class Home extends Vue {}
 }
 .homepage-hero h1 {
   padding-top: 20vh;
-}
-.arrow-down-icon {
-  position: absolute;
-  bottom: 5%;
 }
 .layer-1 {
   /* z-index: 1000; */
@@ -96,7 +99,7 @@ export default class Home extends Vue {}
   width: auto;
 }
 .vinyl {
-  margin-right: -500px;
+  margin-right: -460px;
 }
 .shadow {
   box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.5);
