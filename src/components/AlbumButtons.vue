@@ -15,6 +15,7 @@
 
     <a
       class="button button-light"
+      target="_blank"
       href="https://geo.music.apple.com/us/album/sons-of-abraham/1563538824?itsct=music_box_link&itscg=30200&ct=albums_so_ns_of_abraham&ls=1&app=music"
     >
       <span>{{ $t('cover.buttons.buy') }}</span>
