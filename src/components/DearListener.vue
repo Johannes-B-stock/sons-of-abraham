@@ -1,5 +1,5 @@
 <template>
-  <section class="dear-listener is-clipped">
+  <section class="dear-listener is-clipped" :class="$i18n.locale">
     <div class="container is-max-desktop">
       <div class="columns">
         <div

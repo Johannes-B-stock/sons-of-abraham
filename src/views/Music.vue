@@ -1,6 +1,6 @@
 <template>
   <div>
-    <section class="has-background-primary">
+    <section class="has-background-primary" :class="$i18n.locale">
       <img class="torbogen" src="../assets/torbogen.png" />
     </section>
     <section class="has-background-light">

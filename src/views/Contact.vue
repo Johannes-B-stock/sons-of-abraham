@@ -2,6 +2,7 @@
   <div>
     <section
       class="section has-background-light is-medium has-text-left pt-6 is-size-2"
+      :class="$i18n.locale"
     >
       <div class="container is-max-desktop mt-6">
         <div class="text ml-6">

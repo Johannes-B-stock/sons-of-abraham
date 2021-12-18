@@ -32,4 +32,9 @@ body {
 html {
   scroll-behavior: smooth;
 }
+
+.ar {
+  direction: rtl;
+  font-language-override: 'ar';
+}
 </style>
