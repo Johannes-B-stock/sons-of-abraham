@@ -1,5 +1,5 @@
 <template>
-  <section id="what-about" class="section pb-0">
+  <section id="what-about" class="section pb-0" :class="$i18n.locale">
     <section
       class="section is-hidden-tablet top-round has-background-danger is-two-fifths has-text-white is-size-3"
     >

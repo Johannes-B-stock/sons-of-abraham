@@ -1,6 +1,6 @@
 <template>
   <div>
-    <section class="has-background-primary">
+    <section class="has-background-primary" :class="$i18n.locale">
       <img class="torbogen" src="../assets/torbogen.png" />
     </section>
     <section class="has-background-light">
@@ -207,12 +207,6 @@ export default class Music extends Vue {
   max-height: 80vh;
   margin-bottom: -7px;
   margin-top: 50px;
-}
-.beige {
-  background-color: #d0b999;
-}
-.grey-blue {
-  background-color: #a8b6be;
 }
 .buttons {
   margin: 0% 30%;

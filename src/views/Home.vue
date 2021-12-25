@@ -28,7 +28,7 @@
       </div>
       <div class="hero-foot">
         <div class="container">
-          <span class="icon is-size-3 arrow-down-icon">
+          <span class="icon is-size-3 arrow-down-icon ">
             <a href="#what-about"><i class="fas fa-arrow-down primary"></i></a>
           </span>
         </div>

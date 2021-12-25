@@ -1,5 +1,8 @@
 <template>
-  <section class="section is-clipped dear-listener-2 has-background-link">
+  <section
+    class="section is-clipped dear-listener-2 has-background-link"
+    :class="$i18n.locale"
+  >
     <div class="has-background-brown rectangle is-hidden-mobile"></div>
     <div class="has-background-danger circle left "></div>
     <div
