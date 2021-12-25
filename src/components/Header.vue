@@ -2,7 +2,7 @@
   <nav
     class="is-transparent is-fixed-top navbar"
     v-bind:class="{
-      'has-background-light': scrollPosition > 10,
+      'has-background-light': scrollPosition > 10 || isActive,
     }"
     role="navigation"
     aria-label="main navigation"
@@ -87,6 +87,7 @@ import LanguagePicker from './LanguagePicker.vue';
   },
 })
 export default class Header extends Vue {
+  private isActive = false;
   scrollPosition = 0;
 
   updateScroll() {
