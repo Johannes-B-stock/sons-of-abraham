@@ -37,4 +37,15 @@ html {
   direction: rtl;
   font-language-override: 'ar';
 }
+
+.beige {
+  background-color: #d0b999;
+}
+.grey-blue {
+  background-color: #a8b6be;
+}
+.navbar.has-background-light {
+  transition: background-color 300ms linear, box-shadow 300ms linear;
+  box-shadow: 0 5px 5px -5px grey;
+}
 </style>

@@ -208,12 +208,6 @@ export default class Music extends Vue {
   margin-bottom: -7px;
   margin-top: 50px;
 }
-.beige {
-  background-color: #d0b999;
-}
-.grey-blue {
-  background-color: #a8b6be;
-}
 .buttons {
   margin: 0% 30%;
 }

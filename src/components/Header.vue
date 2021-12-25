@@ -1,7 +1,9 @@
 <template>
   <nav
     class="is-transparent is-fixed-top navbar"
-    v-bind:class="{ 'has-background-light': isActive }"
+    v-bind:class="{
+      'has-background-light': scrollPosition > 10,
+    }"
     role="navigation"
     aria-label="main navigation"
   >
@@ -85,25 +87,21 @@ import LanguagePicker from './LanguagePicker.vue';
   },
 })
 export default class Header extends Vue {
-  private isActive = false;
-  private isScrolledToTop = true;
+  scrollPosition = 0;
+
+  updateScroll() {
+    this.scrollPosition = window.scrollY;
+  }
+  mounted() {
+    window.addEventListener('scroll', this.updateScroll);
+  }
+  destroy() {
+    window.removeEventListener('scroll', this.updateScroll);
+  }
 }
 </script>
 
 <style scoped>
-/* .navbar { */
-/* z-index: 1010!; */
-/* background-color: rgba(255, 255, 255, 0); */
-/* } */
-/* 
-@media screen and (max-width: 1024px) {
-  .navbar {
-    background-color: white !important;
-    background-image: url(../assets/desert-header.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
-} */
 .brand-text {
   font-size: x-large;
 }
