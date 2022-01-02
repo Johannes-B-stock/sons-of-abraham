@@ -45,10 +45,11 @@ export default class Footer extends Vue {
 </script>
 
 <style scoped>
-/* .footer { */
-/* background-image: url(../assets/footer-background.png); */
-/* background-size: cover; */
-/* } */
+.footer {
+  /* background-image: url(../assets/footer-background.png); */
+  /* background-size: cover; */
+  margin-top: 80px;
+}
 .logo {
   width: 150px;
   height: 60px;

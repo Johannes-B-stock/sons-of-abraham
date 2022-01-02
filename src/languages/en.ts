@@ -45,5 +45,7 @@ export default {
     footer: 'Thanks <br />for <br />visiting <br />us',
     info:
       'If you have any question/ suggestion, feel free to contact us. We’ll get back to you as soon as we can.',
+    failed: 'Sending message failed. Please try again.',
+    successful: 'Thank you for contacting us.',
   },
 };
