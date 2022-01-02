@@ -46,5 +46,7 @@ export default {
     footer: 'Danke <br />für <br />deinen <br />Besuch',
     info:
       'Wenn du irgendwelche Fragen/ Anmerkungen hast, schreib uns gern eine Nachricht. Wir antworten sobald wie möglich.',
+    failed: 'Senden der Nachricht fehlgeschlagen. Bitte versuche es erneut.',
+    successful: 'Danke für deine Nachricht.',
   },
 };
