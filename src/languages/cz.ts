@@ -46,5 +46,7 @@ export default {
     footer: 'děkujeme, <br>že jste<br> nás navštívili',
     info:
       'V případě jakýchkoliv otázek či návrhů nás neváhejte kontaktovat. Ozveme se Vám zpět jakmile to bude možné',
+    failed: 'Odeslání zprávy se nezdařilo. Prosím zkuste to znovu.',
+    successful: 'Děkujeme, že jste nás kontaktovali.',
   },
 };

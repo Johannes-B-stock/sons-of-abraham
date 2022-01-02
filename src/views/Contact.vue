@@ -23,7 +23,12 @@
             <div class="field">
               <label class="label">{{ $t('contact.name') }}</label>
               <div class="control">
-                <input name="user_name" class="input" type="text" />
+                <input
+                  name="user_name"
+                  v-model="name"
+                  class="input"
+                  type="text"
+                />
               </div>
             </div>
 
@@ -33,17 +38,14 @@
                 <input
                   class="input"
                   type="email"
+                  v-model="email"
                   name="user_email"
                   :placeholder="$t('contact.emailPlaceholder')"
                 />
                 <span class="icon is-small is-left">
                   <i class="fas fa-envelope"></i>
                 </span>
-                <!-- <span class="icon is-small is-right">
-                  <i class="fas fa-exclamation-triangle"></i>
-                </span> -->
               </div>
-              <!-- <p class="help is-danger">This email is invalid</p> -->
             </div>
 
             <div class="field">
@@ -51,6 +53,7 @@
               <div class="control">
                 <textarea
                   name="message"
+                  v-model="message"
                   class="textarea"
                   :placeholder="$t('contact.messagePlaceholder')"
                 ></textarea>
@@ -65,6 +68,33 @@
               </div>
             </div>
           </form>
+          <div
+            class="notification mt-4 is-success"
+            :class="{ 'is-hidden': !showSuccessful }"
+          >
+            <button
+              class="delete"
+              v-on:click="showSuccessful = !showSuccessful"
+            ></button>
+            {{ $t('contact.successful') }}
+          </div>
+          <div
+            class="notification mt-4 is-danger"
+            v-for="error in errors"
+            :key="error"
+          >
+            {{ error }}
+          </div>
+          <div
+            class="notification mt-4 is-danger"
+            :class="{ 'is-hidden': !showFailed }"
+          >
+            <button
+              class="delete"
+              v-on:click="showFailed = !showFailed"
+            ></button>
+            {{ $t('contact.failed') }}
+          </div>
         </div>
       </div>
       <div
@@ -93,28 +123,50 @@
 </template>
 <script>
 import emailjs from 'emailjs-com';
+import { Component, Vue } from 'vue-property-decorator';
 
-export default {
-  methods: {
-    sendEmail: e => {
-      emailjs
-        .sendForm(
-          process.env.VUE_APP_EMAILJS_SERVICE_ID,
-          process.env.VUE_APP_EMAILJS_TEMPLATE_ID,
-          e.target,
-          process.env.VUE_APP_EMAILJS_USER_ID
-        )
-        .then(
-          result => {
-            console.log('SUCCESS!', result.status, result.text);
-          },
-          error => {
-            console.log('FAILED...', error);
-          }
-        );
-    },
-  },
-};
+@Component
+export default class Contact extends Vue {
+  showFailed = false;
+  showSuccessful = false;
+  name = '';
+  email = '';
+  message = '';
+  errors = [];
+  sendEmail(e) {
+    this.errors = [];
+
+    if (!this.name) {
+      this.errors.push(
+        'Please fill out the name input so that we know who you are.'
+      );
+      return;
+    }
+    if (!this.message) {
+      this.errors.push('Please fill out the message input before sending it.');
+      return;
+    }
+    emailjs
+      .sendForm(
+        process.env.VUE_APP_EMAILJS_SERVICE_ID,
+        process.env.VUE_APP_EMAILJS_TEMPLATE_ID,
+        e.target,
+        process.env.VUE_APP_EMAILJS_USER_ID
+      )
+      .then(
+        result => {
+          console.log(result.status);
+          console.log(result.text);
+          e.target.reset();
+          this.showSuccessful = true;
+        },
+        error => {
+          console.log('FAILED...', error);
+          this.showFailed = true;
+        }
+      );
+  }
+}
 </script>
 <style scoped>
 .big-letters {
