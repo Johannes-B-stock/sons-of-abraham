@@ -10,12 +10,10 @@
         </div>
       </div>
     </section>
-    <!-- <section
-      class="section has-background-primary has-text-left pt-6 is-size-2"
-    > -->
-    <div class="columns ">
+
+    <div class="columns">
       <div class="column is-three-fifths has-background-primary">
-        <div class="container has-text-left form-content">
+        <div class="container has-text-left form-content" :class="$i18n.locale">
           <div class="additional-info has-text-light">
             {{ $t('contact.info') }}
           </div>
@@ -187,5 +185,8 @@ export default class Contact extends Vue {
 
 .additional-info {
   margin: 15px 0px;
+}
+.container.ar {
+  text-align: right !important;
 }
 </style>
