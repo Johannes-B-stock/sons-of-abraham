@@ -1,6 +1,8 @@
 import Vue from 'vue';
 import VueRouter, { RouteConfig } from 'vue-router';
 import Home from '../views/Home.vue';
+import Links from '../views/Links.vue';
+import Contact from '../views/Contact.vue';
 import Lyrics from '../views/Lyrics.vue';
 import Music from '../views/Music.vue';
 import { default as axios } from 'axios';
@@ -53,7 +55,13 @@ const routes: Array<RouteConfig> = [
   {
     path: '/contact',
     name: 'Contact',
-    component: () => import('../views/Contact.vue'),
+    component: Contact,
+  },
+
+  {
+    path: '/links',
+    name: 'Links',
+    component: Links,
   },
 ];
 

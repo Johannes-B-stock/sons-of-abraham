@@ -5,6 +5,7 @@ export default {
     lyrics: 'Lyrics',
     info: 'Info',
     contact: 'Contact',
+    links: 'Links',
   },
   cover: {
     name: 'SoNs of Abraham',
@@ -47,5 +48,13 @@ export default {
       'If you have any question/ suggestion, feel free to contact us. We’ll get back to you as soon as we can.',
     failed: 'Sending message failed. Please try again.',
     successful: 'Thank you for contacting us.',
+  },
+
+  links: {
+    text: `If you like our music and want to get to know more about God, you’re at the right place. 
+    Here is some material and links that will help you to discover God the Father.
+    Click through it and please contact us, if you have more questions.
+    We‘re happy to <a href="/contact">connect</a> with you.`,
+    header: 'Here are some Links',
   },
 };
