@@ -189,4 +189,8 @@ export default class Contact extends Vue {
 .container.ar {
   text-align: right !important;
 }
+
+.columns {
+  margin-right: 0 !important;
+}
 </style>
