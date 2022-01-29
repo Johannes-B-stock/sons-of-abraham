@@ -5,6 +5,7 @@ export default {
     lyrics: 'Texte',
     info: 'Info',
     contact: 'Kontakt',
+    links: 'Links',
   },
 
   cover: {
@@ -48,5 +49,12 @@ export default {
       'Wenn du irgendwelche Fragen/ Anmerkungen hast, schreib uns gern eine Nachricht. Wir antworten sobald wie möglich.',
     failed: 'Senden der Nachricht fehlgeschlagen. Bitte versuche es erneut.',
     successful: 'Danke für deine Nachricht.',
+  },
+
+  links: {
+    text: `Wenn du unsere Musik magst und mehr über Gott erfahren möchtest, dann bist du hier richtig. 
+    Hier findest du Links zu verschiedenen Sachen, die dir helfen Gott den Vater mehr kennenlernen. 
+    Klick dich durch und kontaktierte uns, wenn du irgendwelche Fragen hast. 
+    Wir freuen uns mit dir zu <a href="/contact">connecten</a>.`,
   },
 };

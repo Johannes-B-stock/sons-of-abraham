@@ -32,19 +32,19 @@
         class="navbar-menu"
         v-bind:class="{ 'is-active': isActive }"
       >
-        <div class="navbar-end mr-5">
+        <div class="navbar-end mr-5" v-on:click="isActive = false">
           <router-link class="navbar-item" to="/" exact>{{
             $t('header.about')
           }}</router-link>
           <router-link class="navbar-item" to="/music">{{
             $t('header.music')
           }}</router-link>
-          <!-- <router-link class="navbar-item" to="/info">{{
-            $t('header.info')
-          }}</router-link> -->
           <router-link class="navbar-item" to="/contact">{{
             $t('header.contact')
           }}</router-link>
+          <!-- <router-link class="navbar-item" to="/links">{{
+            $t('header.links')
+          }}</router-link> -->
           <div class="navbar-item px-5">
             <span class="icon icons has-text-info" style="font-size: 1.5em">
               <a href="https://www.facebook.com/SoNs.Symphony/" target="blank">

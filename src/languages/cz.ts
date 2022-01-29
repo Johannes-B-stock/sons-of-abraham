@@ -49,4 +49,11 @@ export default {
     failed: 'Odeslání zprávy se nezdařilo. Prosím zkuste to znovu.',
     successful: 'Děkujeme, že jste nás kontaktovali.',
   },
+
+  links: {
+    text: `Pokud se vám naše hudba líbí a chcete se dozvědět více o Bohu, jste na správném místě.
+    Zde je několik materiálů a odkazů, které vám pomohou poznat Boha jako Otce.
+    Prohlédněte si obsah a v případě více dotazů nás kontaktujte.
+    Budeme se těšit na vaší zprávu.`,
+  },
 };
