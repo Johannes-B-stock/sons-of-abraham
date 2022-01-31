@@ -1,18 +1,29 @@
 <template>
-  <div>
-    <section
-      class="section has-background-light is-medium has-text-left pt-6 is-size-2"
+  <div class="has-background-primary">
+    <div
+      class="columns is-vcentered is-gapless has-background-light has-text-left is-size-2"
       :class="$i18n.locale"
     >
-      <div class="container is-max-desktop mt-6">
-        <div class="text ml-6">
-          <span class="big-letters" v-html="$t('contact.header')"> </span>
+      <div class="column is-2 ">
+        <div class="contact-bubble has-background-primary">
+          {{ $t('header.contact') }}
         </div>
       </div>
-    </section>
+      <div class="column is-1"></div>
+      <div class="column is-4 image-column">
+        <div
+          class="big-letters header-text"
+          v-html="$t('contact.header')"
+        ></div>
+        <img
+          src="../assets/desert.jpeg"
+          style="margin-top:15vh; margin-bottom: -17px !important;"
+        />
+      </div>
+    </div>
 
-    <div class="columns">
-      <div class="column is-three-fifths has-background-primary">
+    <div class="columns is-gapless">
+      <div class="column is-7 has-background-primary">
         <div class="container has-text-left form-content" :class="$i18n.locale">
           <div class="additional-info has-text-light">
             {{ $t('contact.info') }}
@@ -58,7 +69,7 @@
               </div>
             </div>
 
-            <div class="field is-grouped">
+            <div class="field is-grouped is-pulled-right">
               <div class="control">
                 <button class="button is-primary">
                   {{ $t('contact.submit') }}
@@ -95,21 +106,18 @@
           </div>
         </div>
       </div>
-      <div
-        class="column is-two-fifths has-background-link"
-        style="padding: 0px"
-      >
+      <div class="column has-background-link">
         <figure class="image is-800x866">
           <img src="../assets/SoNs-2019-23.jpeg" />
         </figure>
       </div>
     </div>
     <section
-      class="section is-large wall-background pt-6 is-size-2"
+      class="section is-medium wall-background is-size-2"
       style="margin-top:-12px"
     >
       <div
-        class="container has-text-left is-max-desktop mt-6"
+        class="container has-text-left is-max-desktop"
         style="max-width:300px"
       >
         <div class="text ml-6 pl-6">
@@ -168,23 +176,54 @@ export default class Contact extends Vue {
 </script>
 <style scoped>
 .big-letters {
-  text-transform: capitalize;
+  text-transform: uppercase;
   color: #c83737ff;
   font-weight: 900;
+  font-family: 'Roboto-Bold';
 }
 .form-content {
   margin: 10% 20%;
   max-width: 450px;
+  min-height: 500px;
 }
-
+.header-text {
+  position: absolute;
+  margin-left: 15%;
+  margin-top: 20%;
+}
+.input,
+.textarea {
+  background-color: #ceb999;
+  border-width: 0;
+  border-radius: 0;
+}
+.contact-bubble {
+  width: 350px;
+  text-align: center;
+  color: white;
+  transform: rotate(270deg);
+  text-transform: uppercase;
+  padding: 65px 0px;
+  border-radius: 0 0 100% 100%;
+  margin-left: -140px;
+}
 .wall-background {
   background-image: url(../assets/wall.jpeg);
   background-repeat: no-repeat;
   background-size: cover;
 }
-
+.label,
+.button.is-primary {
+  text-transform: uppercase;
+  color: #850504;
+  font-family: 'Roboto';
+  font-weight: 500;
+}
+.columns.is-gapless:not(:last-child) {
+  margin-bottom: 0rem;
+}
 .additional-info {
-  margin: 15px 0px;
+  margin: 20px 0 30px 0;
 }
 .container.ar {
   text-align: right !important;
