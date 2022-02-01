@@ -32,7 +32,7 @@
     "vue-router": "^3.2.0"
   },
   "devDependencies": {
-    "@types/aos": "^3.0.3",
+    "@types/aos": "^3.0.4",
     "@types/chai": "^4.2.11",
     "@types/howler": "^2.2.2",
     "@types/mocha": "^5.2.4",
