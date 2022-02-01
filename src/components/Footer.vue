@@ -10,7 +10,7 @@
       </div>
     </cookie-law>
     <div class="container" style="margin-bottom:40px">
-      <nav class="level">
+      <nav class="level is-mobile">
         <div class="level-left">
           <div class="level-item">
             <a href="http://www.sons-music.de/" target="blank">
@@ -18,7 +18,7 @@
             </a>
           </div>
         </div>
-        <div class="level-item">
+        <div class="level-item is-hidden-mobile">
           <router-link class="navbar-item" to="/" exact>{{
             $t('header.about')
           }}</router-link>
@@ -31,10 +31,10 @@
         </div>
         <div class="level-right">
           <div class="level-item">
-            <span class="icon icons has-text-success" style="font-size: 1.5em">
+            <span class="icon icons" style="font-size: 1.5em">
               <a
                 href="https://www.facebook.com/SoNs.Symphony/"
-                class=""
+                class="has-text-danger"
                 target="blank"
               >
                 <i class="fab fa-facebook"></i>
@@ -42,20 +42,22 @@
             </span>
           </div>
           <div class="level-item">
-            <span class="icon icons has-text-info" style="font-size: 1.5em">
+            <span class="icon icons" style="font-size: 1.5em">
               <a
                 href="https://open.spotify.com/album/0nVq2RGIw3WxL57GBUPEA1?si=XPPqUsJTRka3tnd-Aq8U_Q&dl_branch=1"
                 target="blank"
+                class="has-text-danger"
               >
                 <i class="fab fa-spotify"></i>
               </a>
             </span>
           </div>
           <div class="level-item">
-            <span class="icon icons has-text-info" style="font-size: 1.5em">
+            <span class="icon icons" style="font-size: 1.5em">
               <a
                 href="https://geo.music.apple.com/us/album/sons-of-abraham/1563538824?itsct=music_box_link&itscg=30200&ct=albums_so_ns_of_abraham&ls=1&app=music"
                 target="blank"
+                class="has-text-danger"
               >
                 <i class="fab fa-itunes"></i>
               </a>
@@ -100,9 +102,7 @@ export default class Footer extends Vue {
 
 <style scoped>
 .footer {
-  /* background-image: url(../assets/footer-background.png); */
-  /* background-size: cover; */
-  margin-top: 80px;
+  margin-top: 100px;
 }
 .logo {
   width: 150px;
