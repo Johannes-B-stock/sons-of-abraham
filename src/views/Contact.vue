@@ -10,9 +10,9 @@
         </div>
       </div>
       <div class="column is-1"></div>
-      <div class="column is-4 image-column">
+      <div class="column is-4 image-column has-text-right">
         <div
-          class="big-letters header-text"
+          class="big-letters header-text has-text-left"
           v-html="$t('contact.header')"
         ></div>
         <img
