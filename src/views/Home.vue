@@ -19,7 +19,7 @@
               data-aos-easing="ease-in-sine"
               data-aos-delay="800"
               class="cover shadow mb-5"
-              src="../assets/cover.png"
+              src="../assets/cover.jpg"
             />
 
             <AlbumButtons />
@@ -44,7 +44,6 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import HomepageHero from '@/components/HomepageHero.vue';
 import AlbumButtons from '@/components/AlbumButtons.vue';
 import DearListener from '@/components/DearListener.vue';
 import DearListener2 from '@/components/DearListener2.vue';
@@ -53,7 +52,6 @@ import Sons from '@/components/Sons.vue';
 
 @Component({
   components: {
-    HomepageHero,
     AlbumButtons,
     DearListener,
     DearListener2,
@@ -97,6 +95,7 @@ export default class Home extends Vue {}
   height: 80vw;
   max-height: 350px;
   width: auto;
+  margin-right: -105px;
 }
 .vinyl {
   margin-right: -460px;

@@ -1,7 +1,7 @@
 <template>
   <div>
     <section class="has-background-primary" :class="$i18n.locale">
-      <img class="torbogen" src="../assets/torbogen.png" />
+      <img class="torbogen" src="../assets/music-background-a.png" />
     </section>
     <section class="has-background-light">
       <div class="columns is-gapless is-multiline">
