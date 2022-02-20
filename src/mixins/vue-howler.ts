@@ -136,7 +136,6 @@ export default class VueHowler extends VueHowlerProps {
     {
       name: 'load',
       hook: () => {
-        console.log('loaded');
         this.duration = this._howl?.duration() ?? 0;
       },
     },
@@ -146,7 +145,6 @@ export default class VueHowler extends VueHowlerProps {
       name: 'play',
       hook: () => {
         this.playing = true;
-        console.log('playing');
       },
     },
     {
@@ -227,7 +225,11 @@ export default class VueHowler extends VueHowlerProps {
 
   @Watch('sources')
   onSourcesChanges() {
+    const wasPlaying = this.playing;
     this._reinitialize();
+    if (wasPlaying) {
+      this._howl?.play();
+    }
   }
 
   /**
@@ -257,7 +259,6 @@ export default class VueHowler extends VueHowlerProps {
         withCredentials: this.xhrWithCredentials ? true : undefined,
       },
     });
-
     const duration = this._howl.duration();
     this.duration = duration;
 
