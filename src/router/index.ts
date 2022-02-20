@@ -19,15 +19,6 @@ const routes: Array<RouteConfig> = [
     component: Home,
   },
   {
-    path: '/info',
-    name: 'Info',
-    // route level code-splitting
-    // this generates a separate chunk (info.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "info" */ '../views/Info.vue'),
-  },
-
-  {
     path: '/music',
     name: 'Music',
     component: Music,

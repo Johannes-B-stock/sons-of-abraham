@@ -18,7 +18,14 @@
               data-aos="fade-left"
               data-aos-easing="ease-in-sine"
               data-aos-delay="800"
-              class="cover shadow mb-5"
+              class="cover-desktop is-hidden-mobile shadow mb-5"
+              src="../assets/cover.jpg"
+            />
+            <img
+              data-aos="fade-left"
+              data-aos-easing="ease-in-sine"
+              data-aos-delay="800"
+              class="cover-mobile is-hidden-tablet shadow mb-5"
               src="../assets/cover.jpg"
             />
 
@@ -91,7 +98,12 @@ export default class Home extends Vue {}
 .layer-content {
   margin-top: 24vh;
 }
-.cover {
+.cover-mobile {
+  height: 80vw;
+  max-height: 350px;
+  width: auto;
+}
+.cover-desktop {
   height: 80vw;
   max-height: 350px;
   width: auto;
