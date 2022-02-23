@@ -1,7 +1,7 @@
 <template>
   <div>
     <section class="has-background-primary" :class="$i18n.locale">
-      <img class="torbogen" src="../assets/torbogen.png" />
+      <img class="torbogen" src="../assets/music-background-a.png" />
     </section>
     <section class="has-background-light">
       <div class="columns is-gapless is-multiline">
@@ -16,9 +16,9 @@
               </span>
               <AudioPlayer
                 class="level-item"
+                ref="audioPlayer"
                 :sources="currentSource"
                 :loop="false"
-                :autoplay="autoplay"
                 :html5="true"
                 :formats="format"
                 v-on:play-toggle="playerToggled"
@@ -91,6 +91,7 @@ import { Component, Vue } from 'vue-property-decorator';
 import AudioPlayer from '@/components/AudioPlayer.vue';
 import Song from '@/components/Song.vue';
 import { songs } from '@/content';
+import { AudioPlayerRef } from '../mixins/audioPlayerRef';
 
 @Component({
   components: {
@@ -106,7 +107,6 @@ export default class Music extends Vue {
   private songIndex = 0;
   private songTitle = this.songs[this.songIndex]['title' + this.locale];
   private format = ['mp3'];
-  private autoplay = false;
   host = process.env.VUE_APP_AUDIO_SERVER ?? 'http://localhost:8000';
   url = this.host + '/song/';
   private currentSource = [this.url + this.songIndex + '/full'];
@@ -116,62 +116,54 @@ export default class Music extends Vue {
   );
 
   nextSong() {
-    const wasAlreadyplaying = this.songs[this.songIndex].isPlaying;
+    const wasAlreadyPlaying = this.songs[this.songIndex].isPlaying;
     this.songs[this.songIndex].isPlaying = false;
     this.songIndex++;
-    this.currentSource = ['notValid.mp3'];
-    this.refreshSource();
 
-    this.autoplay = wasAlreadyplaying ?? false;
     if (this.songIndex >= 11) {
       this.songIndex = 0;
     }
-    this.refreshSource();
-
-    this.showLyrics(this.songIndex + 1);
-    this.songs[this.songIndex].isPlaying = wasAlreadyplaying;
+    this.setNewSong(wasAlreadyPlaying);
   }
+
   private refreshSource() {
     this.currentSource = [this.url + this.songIndex + '/full'];
   }
 
   previousSong() {
-    const wasAlreadyplaying = this.songs[this.songIndex].isPlaying;
+    const wasAlreadyPlaying = this.songs[this.songIndex].isPlaying;
     this.songs[this.songIndex].isPlaying = false;
     this.songIndex--;
-    wasAlreadyplaying && (this.autoplay = true);
     if (this.songIndex < 0) {
       this.songIndex = 0;
     }
-    this.refreshSource();
-
-    this.songs[this.songIndex].isPlaying = wasAlreadyplaying;
-    this.showLyrics(this.songIndex);
+    this.setNewSong(wasAlreadyPlaying);
   }
+
+  private setNewSong(wasAlreadyPlaying: boolean | undefined) {
+    this.refreshSource();
+    this.songs[this.songIndex].isPlaying = wasAlreadyPlaying;
+    this.showLyrics(this.songIndex + 1);
+  }
+
   playSong(track: number) {
-    const wasAlreadyplaying = this.songs[this.songIndex].isPlaying;
+    if (this.songIndex === track - 1) {
+      (this.$refs.audioPlayer as AudioPlayerRef).clickOnPlay();
+      return;
+    }
     this.songs[this.songIndex].isPlaying = false;
     this.songIndex = track - 1;
     this.songTitle = this.songs[this.songIndex].titleEn;
-
-    this.autoplay = wasAlreadyplaying ?? false;
-
-    this.songs[this.songIndex].isPlaying = wasAlreadyplaying;
-    this.refreshSource();
-    this.showLyrics(track);
+    this.setNewSong(true);
+    (this.$refs.audioPlayer as AudioPlayerRef).clickOnPlay();
   }
   pauseSong() {
     this.songs[this.songIndex].isPlaying = false;
-    this.autoplay = false;
-
-    this.currentSource = ['notValid.mp3'];
+    (this.$refs.audioPlayer as AudioPlayerRef).clickOnPause();
   }
   playerToggled(playing: boolean) {
     const song = this.songs[this.songIndex];
     song.isPlaying = playing;
-    if (this.currentSource.includes('notValid.mp3')) {
-      this.refreshSource();
-    }
     this.$set(this.songs, this.songIndex, song);
   }
   showLyrics(track: number) {
