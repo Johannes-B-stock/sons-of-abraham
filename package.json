@@ -22,7 +22,7 @@
     "math-clamp": "^1.0.0",
     "object-assign": "^4.1.1",
     "object-values": "^2.0.0",
-    "vue": "^2.6.11",
+    "vue": "^3.2.37",
     "vue-class-component": "^7.2.3",
     "vue-cookie-law": "^1.13.3",
     "vue-cookies": "^1.7.4",
